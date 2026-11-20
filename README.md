@@ -1,6 +1,3 @@
-[Uploading README.md…]()
-# 4D-
-4D New Ui library for roblox open source project -good -cool -fast -optimazed
 # Lumen UI Library
 
 **Languages:** [Русский](#-русский) · [English](#-english)
@@ -30,8 +27,11 @@ A Rayfield-style GUI library for Roblox script executors: you describe your func
 6. [Как вызывать функции из кода](#как-вызывать-функции-из-кода)
 7. [Flags и сохранение настроек](#flags-и-сохранение-настроек)
 8. [Иконки и картинки](#иконки-и-картинки)
-9. [Хаб `Hub.lua`: свои функции под игру](#хаб-hublua-свои-функции-под-игру)
-10. [Совместимость и решение проблем](#совместимость-и-решение-проблем)
+9. [Панели: боковые, верхние и нижние окна](#панели-боковые-верхние-и-нижние-окна)
+10. [Виджеты: урон по телу, хил, таймеры, полоски](#виджеты-урон-по-телу-хил-таймеры-полоски)
+11. [Встроенные настройки и память игрока](#встроенные-настройки-и-память-игрока)
+12. [Хаб `Hub.lua`: свои функции под игру](#хаб-hublua-свои-функции-под-игру)
+13. [Совместимость и решение проблем](#совместимость-и-решение-проблем)
 
 ## Установка
 
@@ -98,6 +98,9 @@ Tab:CreateToggle({
 | `InfoBar` / `FPS` | boolean | `true` | Плашка сверху: аватар, ник, скрипт, инжектор, FPS, пинг, игроки. Клик по ней скрывает и показывает окно. |
 | `TabStyle` | `"Expand"` | обычный | `"Expand"`: вкладки это иконки, выбранная показывает название. Нужен, если вкладок много. |
 | `ConfigurationSaving` | table | выкл. | `{ Enabled = true, FolderName = "...", FileName = "..." }` |
+| `SettingsTab` | boolean | `true` | Встроенная вкладка **Settings** (см. ниже). `false` убирает её. |
+| `ReturningText` | string | авто | Текст интро для вернувшегося игрока. Подстановки: `{nick}`, `{intro}`. |
+| `ReturningIntro` | boolean | `true` | `false` отключает приветствие «Hello again». |
 
 ### Методы окна
 
@@ -113,6 +116,14 @@ Tab:CreateToggle({
 | `Window:SetFPS(bool)` | Показать или скрыть плашку сверху. |
 | `Window:OnDestroy(function)` | Функция, которая вызовется при закрытии GUI (удобно для очистки). |
 | `Window:Destroy()` | Закрыть GUI (анимация: окно сжимается, потом закрывается плашка). |
+| `Window:CreatePanel(options)` | Боковое, верхнее или нижнее окно (см. «Панели»). |
+| `Window:GetPanel(id)` | Найти уже созданную панель. |
+| `Window:CreateBodyPanel(options)` | Панель с моделью тела и индикатором хила. |
+| `Window:CreateTimer(options)` | Таймер раунда, обратный отсчёт или секундомер. |
+| `Window:SetInfoBarSide(side)` | Плашка: `"Top"`, `"Bottom"`, `"Left"`, `"Right"` или `"Floating"` (отдельное окно). |
+| `Window:SetToggleKey(key)` | Сменить клавишу скрытия окна. |
+| `Window:SetNotifySide("Left"/"Right")` | Сторона уведомлений. |
+| `Window:ResetLayout()` | Вернуть окно и панели на место. |
 
 ## Вкладки и элементы
 
@@ -249,6 +260,124 @@ Lumen.Flags                        -- таблица всех элементов
 
 Свою картинку можно указать числом (`Icon = 123456789`), строкой `"rbxassetid://123456789"`. Для карточек `CreateProfile` в `Image` подходят ещё ссылки `rbxthumb://` (аватар, иконка игры).
 
+## Панели: боковые, верхние и нижние окна
+
+Панель это отдельное окно, пристыкованное к краю экрана. Оно выезжает, когда мышь касается этого края, и прячется, когда мышь уходит. Внутрь добавляются те же элементы, что и во вкладку.
+
+```lua
+local Panel = Window:CreatePanel({ Id = "stats", Title = "Stats", Side = "Right", Width = 260, Height = 300 })
+Panel:CreateToggle({ Name = "Пример", Callback = function(on) print(on) end })
+Panel:CreateSlider({ Name = "Скорость", Range = { 16, 200 }, CurrentValue = 16, Callback = function(v) end })
+```
+
+| Параметр | По умолчанию | Описание |
+|---|---|---|
+| `Id` | `Title` | Уникальное имя панели. Панель с тем же `Id` второй раз не создаётся: возвращается существующая и открывается. |
+| `Title` | `Id` | Заголовок. |
+| `Side` | `"Right"` | `"Left"`, `"Right"`, `"Top"`, `"Bottom"`. |
+| `Width`, `Height` | 270×360 (боковые), 460×220 (верх/низ) | Размер. |
+| `Pinned` | `false` | Не прятаться, когда мышь ушла. |
+| `AutoHide` / `HideDelay` | `true` / `0.45` | Прятать после ухода мыши, с задержкой в секундах. |
+| `HoverZone` | `14` | Толщина полосы у края, которая открывает панель. |
+| `Open` | `false` | Открыть сразу после создания. |
+
+**Методы панели:** `:Open()`, `:Close()`, `:Toggle()`, `:IsOpen()`, `:SetPinned(bool)`, `:Dock("Left"/"Top"/"Right"/"Bottom")`, `:Float(x, y)`, `:ResetLayout()`, `:Destroy()` и все методы элементов (`CreateButton`, `CreateToggle` и так далее).
+
+**Что может игрок:**
+- **Зажать заголовок и перетащить.** Если бросить окно у края (подсвечивается полоска), оно пристыкуется к нему. Если бросить в другом месте, оно останется свободным окном.
+- Кнопка со стрелками переносит панель на следующий край (слева, сверху, справа, снизу).
+- Булавка закрепляет панель открытой, крестик убирает её обратно к краю.
+- Положение панелей и главного окна запоминается между запусками.
+
+**Без дубликатов.** Одно и то же окно не создаётся дважды: повторный `CreatePanel` с тем же `Id`, повторный `CreateTab` с тем же именем и повторный `CreateTimer` с тем же `Id`/`Name` возвращают уже существующий объект. Повторный запуск скрипта заменяет старый GUI новым.
+
+**Инфо-плашка сверху** тоже двигается: её можно скрыть, зажать и перетащить к любому краю (`Top`, `Bottom`, `Left`, `Right`; у боковых краёв она становится вертикальной) или оставить отдельным окном. Это же меняется в **Settings** и через `Window:SetInfoBarSide(...)`, `Window:SetFPS(false)`.
+
+## Виджеты: урон по телу, хил, таймеры, полоски
+
+Все виджеты можно класть и в панель, и во вкладку.
+
+### Урон по телу (`CreateBodyDamage`)
+
+Показывает модель персонажа (или простую фигуру), и часть тела, куда пришёл урон, загорается красным. Рядом полоска здоровья, цифры урона и список последних ударов.
+
+```lua
+local panel, body, heal = Window:CreateBodyPanel({ Side = "Left" })   -- панель сразу с моделью и хилом
+-- или вручную:
+local body = SomePanel:CreateBodyDamage({ Mode = "Model" })           -- "Model" или "Schematic"
+
+body:Report("Head", 12)           -- показать удар в голову (из своего кода игры)
+body:ReportHeal(8)                -- показать хил
+body:SetTarget(somePlayer)        -- следить за другим игроком
+```
+
+Группы: `Head`, `Torso`, `LeftArm`, `RightArm`, `LeftLeg`, `RightLeg`. Модель можно вращать мышью, она сама вернётся лицом вперёд.
+
+**Как определяется часть тела.** Roblox не сообщает клиенту, куда попал урон, поэтому есть три источника, и в списке ударов видно, какой сработал:
+1. **Точно (красный).** Игра хранит здоровье конечностей (`NumberValue` / `IntValue` или атрибут с именем `Health`/`HP` у частей тела) или ты сам вызвал `body:Report(...)` из модуля игры.
+2. **Примерно (оранжевый, «est.»).** Берётся игрок, который смотрит на тебя, и часть тела, ближайшая к линии его прицела. Это догадка, она работает для игр с попаданием «по лучу».
+3. **Неизвестно (серый, «?»).** Урон пришёл, но куда, определить нельзя: слегка подсвечивается всё тело.
+
+Если игра не раскрывает место попадания, самый надёжный способ это модуль игры: перехвати событие игры и вызови `body:Report("Head", урон)`.
+
+### Хил (`CreateHealMeter`)
+
+Показывает, лечится ли игрок прямо сейчас («Healing» / «Not healing»), скорость хила в HP/сек и полоску. Параметры: `Target` (игрок, по умолчанию ты), `MaxRate` (скорость, при которой полоска полная, по умолчанию 10).
+
+### Полоска (`CreateBar`)
+
+```lua
+local stamina = Panel:CreateBar({ Name = "Stamina", Icon = "bolt", Max = 100, Color = Color3.fromRGB(90, 220, 140) })
+stamina:Set(70)            -- значение
+stamina:Set(70, 150)       -- значение и новый максимум
+```
+Необязательные поля: `Value`, `Format = function(value, max) return "..." end`. Методы: `:Set(value, max)`, `:Get()`, `:SetColor(Color3)`.
+
+### Таймеры (`Window:CreateTimer`)
+
+Таймеры показываются внизу или вверху экрана и складываются стопкой. Цвет меняется сам: янтарный в последние `Warning` секунд, красный и мигающий в последние 5.
+
+```lua
+local round = Window:CreateTimer({ Name = "Round", Duration = 120, Position = "Bottom",
+    Callback = function() print("раунд закончился") end })
+round:Pause(); round:Resume(); round:Add(30); round:Set(60); round:Reset(90)
+print(round:GetTime(), round:IsRunning())
+
+local watch = Window:CreateTimer({ Name = "Stopwatch", Mode = "Up", Position = "Top" })   -- секундомер
+```
+
+| Параметр | По умолчанию | Описание |
+|---|---|---|
+| `Name` / `Id` | `"Timer"` | Название. Таймер с тем же именем не создаётся второй раз. |
+| `Duration` | `60` | Длина отсчёта (для секундомера цель, необязательно). |
+| `Mode` | `"Down"` | `"Down"` отсчёт вниз, `"Up"` секундомер. |
+| `Position` | `"Bottom"` | `"Bottom"` или `"Top"`. |
+| `Warning` | `10` | За сколько секунд цвет становится янтарным. |
+| `AutoStart` | `true` | Запускать сразу. |
+| `Keep` | `false` | Не убирать после окончания (иначе исчезает через `HideDelay`, 3 секунды). |
+| `Color`, `ShowBar` | акцент, `true` | Цвет и полоска прогресса. |
+| `Callback`, `OnTick` | нет | Функция по окончании; функция каждую секунду (получает секунды). |
+| `FinishAtGoal` | `false` | Для секундомера: закончить по достижении `Duration`. |
+
+**Методы:** `:Start()`, `:Pause()`, `:Resume()`, `:Stop()`, `:Reset(seconds)`, `:Set(seconds)`, `:Add(seconds)`, `:GetTime()`, `:IsRunning()`, `:SetName(text)`, `:OnFinish(fn)`, `:Destroy()`.
+
+**Привязка к таймеру самой игры** (время раунда, которое игра уже показывает):
+```lua
+round:BindValue(workspace.RoundTime)            -- NumberValue / IntValue
+round:BindValue(workspace, "TimeLeft")          -- атрибут
+round:BindText(player.PlayerGui.Hud.Timer)      -- TextLabel с текстом вида 02:35
+round:Unbind()
+```
+
+## Встроенные настройки и память игрока
+
+**Вкладка Settings** добавляется сама, после твоих вкладок, и не требует кода: акцентный цвет (набор и свой), прозрачность, масштаб, блюр, анимация запуска, клавиша скрытия, сторона уведомлений, инфо-плашка (показать и позиция), сброс положения окон, «запоминать мои настройки», сброс всех настроек. Если ты создал вкладку `Settings` сам, элементы добавятся в неё. Отключается через `SettingsTab = false`.
+
+**Библиотека запоминает игрока.** Всё, что игрок поменял в Settings, а также положение главного окна, панелей и инфо-плашки сохраняется в `workspace/Lumen/Settings.json` отдельно для каждого аккаунта (по `UserId`) и загружается при каждом запуске. Значения игрока важнее значений из `CreateWindow`. Игрок может выключить запоминание в Settings. Нужны `writefile`/`readfile`/`isfile`, без них всё работает, но не запоминается.
+
+**Приветствие.** Новому игроку показывается обычное интро (`IntroText`). Вернувшемуся: `Hello again <ник> 4D$ Present you`, где «4D$ Present» это твой `IntroText`. Свой текст: `ReturningText = "С возвращением, {nick}! {intro}"`. Отключить: `ReturningIntro = false`. Если анимация запуска выключена, вместо неё приходит уведомление с тем же приветствием.
+
+Клавише в `CreateKeybind` можно добавить `OnChange = function(keyName) end`: она вызывается, когда игрок выбрал новую клавишу (а `Callback` вызывается, когда клавишу нажали).
 ## Хаб `Hub.lua`: свои функции под игру
 
 Хаб это готовый скрипт на этой библиотеке: вкладки **Combat, Visuals, Player, Farm, Teleport, Misc, Info** и слой совместимости с исполнителями (Solara, Xeno, Volt, Potassium, Synapse, Delta, Codex, KRNL).
@@ -256,9 +385,9 @@ Lumen.Flags                        -- таблица всех элементов
 **Настройки в блоке `Config` вверху файла:**
 ```lua
 local Config = {
-    ScriptName = "4D Hub", Version = "1.0", Creator = "4D",
+    ScriptName = "4D Hub", Version = "1.0", Creator = "Yeyzcje",
     CreatorUserId = nil,                -- твой user id, чтобы показать аватар
-    Discord = "discord.gg/your-invite",
+    Discord = "https://discord.gg/HzzNDQerN",
     Description = "Universal script hub",
     LoadUrl = "",                       -- raw-ссылка на скрипт (для запуска после телепорта)
 }
@@ -286,7 +415,7 @@ end)
 | Настройки не сохраняются | Нет `writefile`/`readfile`/`isfile`, или забыл `Flag` / `ConfigurationSaving`. |
 | Окно пропало | Нажми `RightShift` (или свою `ToggleKey`) либо кликни по плашке сверху. |
 | Ошибка в `Callback` | Она не ломает GUI: ошибка пишется в консоль (`[Lumen] callback error`). |
-| Много вкладок не помещается | Добавь `TabStyle = "Expand"` и иконки вкладкам. |
+| Много вкладок не помещается | Библиотека сама переключается на вкладки-иконки, когда им не хватает места. Можно включить сразу: `TabStyle = "Expand"`. |
 
 Реальной локации сервера Roblox клиенту не отдаёт, поэтому на плашке показывается количество игроков.
 
@@ -303,8 +432,11 @@ end)
 6. [Calling functions from code](#calling-functions-from-code)
 7. [Flags and saved settings](#flags-and-saved-settings)
 8. [Icons and images](#icons-and-images)
-9. [The hub `Hub.lua`: game-specific functions](#the-hub-hublua-game-specific-functions)
-10. [Compatibility and troubleshooting](#compatibility-and-troubleshooting)
+9. [Panels: side, top and bottom windows](#panels-side-top-and-bottom-windows)
+10. [Widgets: body damage, heal meter, timers, bars](#widgets-body-damage-heal-meter-timers-bars)
+11. [Built-in settings and the player's memory](#built-in-settings-and-the-players-memory)
+12. [The hub `Hub.lua`: game-specific functions](#the-hub-hublua-game-specific-functions)
+13. [Compatibility and troubleshooting](#compatibility-and-troubleshooting)
 
 ## Install
 
@@ -371,6 +503,9 @@ The rule is simple: **describe an element with a `Callback` and it appears in th
 | `InfoBar` / `FPS` | boolean | `true` | Top bar: avatar, nickname, script, injector, FPS, ping, players. Clicking it hides / shows the window. |
 | `TabStyle` | `"Expand"` | normal | `"Expand"`: tabs are icons and the selected one shows its name. Use it with many tabs. |
 | `ConfigurationSaving` | table | off | `{ Enabled = true, FolderName = "...", FileName = "..." }` |
+| `SettingsTab` | boolean | `true` | Built-in **Settings** tab (see below). `false` removes it. |
+| `ReturningText` | string | auto | Intro text for a returning player. Placeholders: `{nick}`, `{intro}`. |
+| `ReturningIntro` | boolean | `true` | `false` turns the "Hello again" greeting off. |
 
 ### Window methods
 
@@ -386,6 +521,14 @@ The rule is simple: **describe an element with a `Callback` and it appears in th
 | `Window:SetFPS(bool)` | Show or hide the top info bar. |
 | `Window:OnDestroy(function)` | Runs when the GUI closes (handy for cleanup). |
 | `Window:Destroy()` | Close the GUI (the window squeezes in, then the info bar closes from the sides). |
+| `Window:CreatePanel(options)` | A side, top or bottom window (see "Panels"). |
+| `Window:GetPanel(id)` | Find a panel that was already created. |
+| `Window:CreateBodyPanel(options)` | Panel with the body model and the heal meter. |
+| `Window:CreateTimer(options)` | Round timer, countdown or stopwatch. |
+| `Window:SetInfoBarSide(side)` | Info bar: `"Top"`, `"Bottom"`, `"Left"`, `"Right"` or `"Floating"` (its own window). |
+| `Window:SetToggleKey(key)` | Change the key that hides the window. |
+| `Window:SetNotifySide("Left"/"Right")` | Side of the notifications. |
+| `Window:ResetLayout()` | Put the window and the panels back. |
 
 ## Tabs and elements
 
@@ -522,6 +665,124 @@ Built in: `close`, `check`, `chevron`, `home`, `settings`, `user`, `bolt`, `eye`
 
 For your own image use a number (`Icon = 123456789`) or the string `"rbxassetid://123456789"`. `CreateProfile` also accepts `rbxthumb://` links in `Image` (avatars, game icons).
 
+## Panels: side, top and bottom windows
+
+A panel is a separate window docked to a screen edge. It slides out when the mouse touches that edge and hides when the mouse leaves. It takes the same elements as a tab.
+
+```lua
+local Panel = Window:CreatePanel({ Id = "stats", Title = "Stats", Side = "Right", Width = 260, Height = 300 })
+Panel:CreateToggle({ Name = "Example", Callback = function(on) print(on) end })
+Panel:CreateSlider({ Name = "Speed", Range = { 16, 200 }, CurrentValue = 16, Callback = function(v) end })
+```
+
+| Option | Default | Description |
+|---|---|---|
+| `Id` | `Title` | Unique name of the panel. A panel with the same `Id` is never created twice: the existing one is returned and opened. |
+| `Title` | `Id` | Header text. |
+| `Side` | `"Right"` | `"Left"`, `"Right"`, `"Top"`, `"Bottom"`. |
+| `Width`, `Height` | 270×360 (sides), 460×220 (top/bottom) | Size. |
+| `Pinned` | `false` | Do not hide when the mouse leaves. |
+| `AutoHide` / `HideDelay` | `true` / `0.45` | Hide after the mouse left, with a delay in seconds. |
+| `HoverZone` | `14` | Thickness of the strip at the edge that opens the panel. |
+| `Open` | `false` | Open right after creation. |
+
+**Panel methods:** `:Open()`, `:Close()`, `:Toggle()`, `:IsOpen()`, `:SetPinned(bool)`, `:Dock("Left"/"Top"/"Right"/"Bottom")`, `:Float(x, y)`, `:ResetLayout()`, `:Destroy()` and every element method (`CreateButton`, `CreateToggle`, ...).
+
+**What the player can do:**
+- **Hold the header and drag.** Drop the window near an edge (a strip lights up) and it docks there. Drop it anywhere else and it stays as a free floating window.
+- The arrows button sends the panel to the next edge (left, top, right, bottom).
+- The pin keeps the panel open, the cross puts it back at its edge.
+- The position of the panels and of the main window is remembered between launches.
+
+**No duplicates.** The same window is never created twice: a second `CreatePanel` with the same `Id`, a second `CreateTab` with the same name and a second `CreateTimer` with the same `Id`/`Name` return the object that already exists. Running the script again replaces the old GUI with the new one.
+
+**The info bar at the top** can be moved too: hide it, hold it and drag it to any edge (`Top`, `Bottom`, `Left`, `Right`; at the side edges it becomes vertical) or leave it as its own window. The same is available in **Settings** and through `Window:SetInfoBarSide(...)`, `Window:SetFPS(false)`.
+
+## Widgets: body damage, heal meter, timers, bars
+
+Every widget can go into a panel or into a tab.
+
+### Body damage (`CreateBodyDamage`)
+
+Shows the character's model (or a simple figure) and the body part that took damage lights up red. Next to it: a health bar, floating damage numbers and a list of the latest hits.
+
+```lua
+local panel, body, heal = Window:CreateBodyPanel({ Side = "Left" })   -- a panel with the model and the heal meter
+-- or by hand:
+local body = SomePanel:CreateBodyDamage({ Mode = "Model" })           -- "Model" or "Schematic"
+
+body:Report("Head", 12)           -- show a hit to the head (from your own game code)
+body:ReportHeal(8)                -- show healing
+body:SetTarget(somePlayer)        -- watch another player
+```
+
+Groups: `Head`, `Torso`, `LeftArm`, `RightArm`, `LeftLeg`, `RightLeg`. The model can be rotated with the mouse and turns back to face forward by itself.
+
+**How the body part is found.** Roblox does not tell the client where damage landed, so there are three sources, and the hit list shows which one was used:
+1. **Exact (red).** The game keeps limb health (`NumberValue` / `IntValue` or an attribute named `Health`/`HP` on the body parts), or you called `body:Report(...)` yourself from a game module.
+2. **Estimated (orange, "est.").** The enemy who is looking at you is picked, and the body part closest to the line of his aim. It is a guess and works for hitscan-style games.
+3. **Unknown (grey, "?").** Damage arrived but the place cannot be known: the whole body glows a little.
+
+If a game does not reveal the hit location, the most reliable way is a game module: hook the game's own event and call `body:Report("Head", damage)`.
+
+### Heal meter (`CreateHealMeter`)
+
+Shows whether the player is healing right now ("Healing" / "Not healing"), the heal speed in HP/s and a bar. Options: `Target` (player, you by default), `MaxRate` (the speed that fills the bar, 10 by default).
+
+### Bar (`CreateBar`)
+
+```lua
+local stamina = Panel:CreateBar({ Name = "Stamina", Icon = "bolt", Max = 100, Color = Color3.fromRGB(90, 220, 140) })
+stamina:Set(70)            -- value
+stamina:Set(70, 150)       -- value and a new maximum
+```
+Optional fields: `Value`, `Format = function(value, max) return "..." end`. Methods: `:Set(value, max)`, `:Get()`, `:SetColor(Color3)`.
+
+### Timers (`Window:CreateTimer`)
+
+Timers appear at the bottom or the top of the screen and stack. The colour changes by itself: amber for the last `Warning` seconds, red and blinking for the last 5.
+
+```lua
+local round = Window:CreateTimer({ Name = "Round", Duration = 120, Position = "Bottom",
+    Callback = function() print("round over") end })
+round:Pause(); round:Resume(); round:Add(30); round:Set(60); round:Reset(90)
+print(round:GetTime(), round:IsRunning())
+
+local watch = Window:CreateTimer({ Name = "Stopwatch", Mode = "Up", Position = "Top" })   -- stopwatch
+```
+
+| Option | Default | Description |
+|---|---|---|
+| `Name` / `Id` | `"Timer"` | Name. A timer with the same name is never created twice. |
+| `Duration` | `60` | Countdown length (for a stopwatch an optional goal). |
+| `Mode` | `"Down"` | `"Down"` countdown, `"Up"` stopwatch. |
+| `Position` | `"Bottom"` | `"Bottom"` or `"Top"`. |
+| `Warning` | `10` | Seconds before the end when the colour turns amber. |
+| `AutoStart` | `true` | Start immediately. |
+| `Keep` | `false` | Do not remove after it finished (otherwise it disappears after `HideDelay`, 3 seconds). |
+| `Color`, `ShowBar` | accent, `true` | Colour and progress bar. |
+| `Callback`, `OnTick` | none | Function when finished; function every second (gets the seconds). |
+| `FinishAtGoal` | `false` | Stopwatch: finish when `Duration` is reached. |
+
+**Methods:** `:Start()`, `:Pause()`, `:Resume()`, `:Stop()`, `:Reset(seconds)`, `:Set(seconds)`, `:Add(seconds)`, `:GetTime()`, `:IsRunning()`, `:SetName(text)`, `:OnFinish(fn)`, `:Destroy()`.
+
+**Following the game's own timer** (the round time the game already shows):
+```lua
+round:BindValue(workspace.RoundTime)            -- NumberValue / IntValue
+round:BindValue(workspace, "TimeLeft")          -- attribute
+round:BindText(player.PlayerGui.Hud.Timer)      -- a TextLabel showing something like 02:35
+round:Unbind()
+```
+
+## Built-in settings and the player's memory
+
+The **Settings tab** is added by itself, after your own tabs, and needs no code: accent colour (presets and custom), transparency, scale, blur, start animation, hide key, notification side, info bar (show and position), reset window positions, "remember my settings", reset everything. If you created a `Settings` tab yourself, the elements are added to it. Turn it off with `SettingsTab = false`.
+
+**The library remembers the player.** Everything the player changes in Settings, plus the position of the main window, the panels and the info bar, is saved to `workspace/Lumen/Settings.json` per account (by `UserId`) and loaded on every launch. The player's values win over the values in `CreateWindow`. The player can switch remembering off in Settings. It needs `writefile`/`readfile`/`isfile`; without them everything works but nothing is remembered.
+
+**Greeting.** A new player sees the normal intro (`IntroText`). A returning one sees `Hello again <nick> 4D$ Present you`, where "4D$ Present" is your `IntroText`. Custom text: `ReturningText = "Welcome back, {nick}! {intro}"`. Turn it off with `ReturningIntro = false`. If the start animation is off, a notification with the same greeting appears instead.
+
+`CreateKeybind` accepts `OnChange = function(keyName) end`: it runs when the player picks a new key (while `Callback` runs when the key is pressed).
 ## The hub `Hub.lua`: game-specific functions
 
 The hub is a ready-made script built on this library: tabs **Combat, Visuals, Player, Farm, Teleport, Misc, Info** and an executor compatibility layer (Solara, Xeno, Volt, Potassium, Synapse, Delta, Codex, KRNL).
@@ -529,9 +790,9 @@ The hub is a ready-made script built on this library: tabs **Combat, Visuals, Pl
 **Settings in the `Config` block at the top of the file:**
 ```lua
 local Config = {
-    ScriptName = "4D Hub", Version = "1.0", Creator = "4D",
+    ScriptName = "4D Hub", Version = "1.0", Creator = "Yeyzcje",
     CreatorUserId = nil,                -- your user id, to show your avatar
-    Discord = "discord.gg/your-invite",
+    Discord = "https://discord.gg/HzzNDQerN",
     Description = "Universal script hub",
     LoadUrl = "",                       -- raw link to this script (to re-run after teleport)
 }
@@ -559,6 +820,6 @@ Replace `1234567890` with the `game.PlaceId` or `game.GameId` of the game. Regis
 | Settings are not saved | Missing `writefile`/`readfile`/`isfile`, or you forgot `Flag` / `ConfigurationSaving`. |
 | The window disappeared | Press `RightShift` (or your `ToggleKey`) or click the info bar at the top. |
 | Error inside a `Callback` | It does not break the GUI: the error is printed to the console (`[Lumen] callback error`). |
-| Too many tabs to fit | Add `TabStyle = "Expand"` and give the tabs icons. |
+| Too many tabs to fit | The library switches to icon-only tabs by itself when there is no room. You can force it with `TabStyle = "Expand"`. |
 
 Roblox does not expose the real server location to the client, so the info bar shows the player count instead.
