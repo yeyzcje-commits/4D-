@@ -1,4 +1,4 @@
---creator Yeyzcje
+--creator yeyzcje
 --discord https://discord.gg/HzzNDQerN
 
 local UIS = game:GetService("UserInputService")
@@ -10,7 +10,7 @@ local Lighting = game:GetService("Lighting")
 local HttpService = game:GetService("HttpService")
 local TextService = game:GetService("TextService")
 
-local Lumen = { Flags = {}, Version = "2.0" }
+local Lumen = { Flags = {}, Version = "2.1" }
 local ES, ED = Enum.EasingStyle, Enum.EasingDirection
 
 --// Embedded icons ---------------------------------------------------------
@@ -34,6 +34,7 @@ local ICON_DATA = {
     pin = "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",
     sliders = "iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAASeSURBVHhe7dwrkNRAEIDhk0gk8iQSiTyJRCKRSOTJc0gkEolEIpFIJBKJROJ6qN7qVKW6bh6ZPHYm839VZ7I7mUsmm3kk3Tc3AAAAAAAAAAAAAAAAALCbEMLzEMK9iHwWke+zvy8hhIcQwp0vgxMQkfci8jsUEJG/IvIxhPDU7wed0V+8iPzwjVxCRP6IyCu/T3TCbvX/fMMupd0Fd4POWKNtRkR+chF0Qn/5vgG3oBeVrwuNsT5/9W0/hjFB40oGfDa401H+3fRns4Rf/ruelqUraJQ2om8wz+b70Qa0tYAkvXh8OTTAfp1ReoH4Mo8RkZe6FuDLT6yLeebL4Yq00XxDzS0dwIUQ3vp9zInIO18GG9Bfli3TFq3aKSsXvXXX9tsi8s3vayIiX/U7fvtZaXto96k/NH+eNhNCuE3demO0rDaI3z7z4OsqEUJ47Xc00RNi3xnRPs9LbIC2mJVNjf6r/mG9a/gdTXQcYN8Zji6K+XO1idwgLsbKprqMW19XqdSagn7ut43Cn6dN6GNZX1EJK5uaw7/wdZXyO5rLfX5W+kP152kTusrmKythZaMDNh3R+7pK6IXjdzSZToLfPoh7f642o421dCCo5UTkk98+0TuLr6eEiHzw+5romEO/47efmXWH+zX+GiLyxv/DzqK7QMEzhaqZBXaiI/ZUg9lnxYPBzKxC97fffBh1MmsBl3479zSv5A2i3aZBWMdWEbPjh8dWtOxl0YfUXWTiy6IhuTV8r+SCmdOBoa8TjclMCavZWsMTXx8aY11BamVwMbtTVC8o4WD2YGmTO4H98mn8HtUsLM3ZYhC3/Z5Zl7DobqBTPUb7J2Nr+xos8uhDJ2v0y8uiviwAAMCRyGcwKPIZDKrkaWRMydNONIx8BgMjn8HAyGcwsIJ3D1dhTNC4kgEf+QxOinwGg8uFwpHP4MTIZxBRkx+gN3ac0Vt3bb+deudhbT6DpvMD9EaPNRPDUBV1dGA+g32eP9TmB+iNHWtq9F91go/KZ7BbYExuUHQWdqypLq44hM1LrSno535bLV/vJmKvap2NHWtqDl/9BrLf0Vzu81LN5QfojR1rdMC2NJJ5cmA+g/1CxNe+xt0DPc4e8xk0nR+gN+QzGBz5DJBbC7j027mneSVvEO02bcM65DPAZdDrGyyl5IKZI59BBzJTwmrkM+gE+QygFwH5DLB+IYx8BidAPgNckM8AAIDrI05/UMTpD6rkKVtMyVM8NIw4/YERpz8w4vQHVvBO3SqMCRpXMuAjTv+kiNMfXC4kjTj9EyNOvzFH5gew+qK37tp+O/Usf22c/rWcMj+A1pl5N78qmubAOP1r2ee5x9H5AazO1Oi/6kCPitO/lt0CTXKDsa1Znamupjg0y0utKejnfltv/PFuIvbq016sztQcvvrNWr+judznrTtNfgCrMzpgWxqhOzkwTv9a9gsRX/ta9BJaX49x+tdyyvwAxOkPjjh95NYCLv127mleyRtEu02fsA5x+rgMPn2DpZRcMHPE6XcgMyWsRpx+J4jTh14ExOlj/YIUcfonQJw+LojTBwAAAAAAAAAAAAAAAMx/W3AtLWWdt30AAAAASUVORK5CYII=",
     globe = "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",
+    refresh = "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",
 }
 
 local FALLBACK_GLYPH = {
@@ -240,12 +241,77 @@ function Lumen:SetFlag(flag, value, silent)
     return true
 end
 
+--// Per-player interface settings, remembered between launches ------------------------
+local DATA_FILE = "Lumen/Settings.json"
+local UserData = { users = {} }
+local function loadUserData()
+    if not (isfile and readfile) then return end
+    pcall(function()
+        if isfile(DATA_FILE) then
+            local d = HttpService:JSONDecode(readfile(DATA_FILE))
+            if type(d) == "table" and type(d.users) == "table" then UserData = d end
+        end
+    end)
+end
+local function saveUserData()
+    if not writefile then return end
+    pcall(function()
+        if makefolder and isfolder and not isfolder("Lumen") then makefolder("Lumen") end
+        writefile(DATA_FILE, HttpService:JSONEncode(UserData))
+    end)
+end
+loadUserData()
 --// Window --------------------------------------------------------------------
 function Lumen:CreateWindow(opts)
     opts = opts or {}
-    Theme.Accent = opts.Accent or Color3.fromRGB(255, 255, 255)
     local titleText = opts.Title or opts.Name or "Lumen"
-    local toggleKey = opts.ToggleKey or Enum.KeyCode.RightShift
+
+    --// Settings of this player (loaded from the last launch) -----------------------
+    local lpUser = Players.LocalPlayer
+    local uid = tostring(lpUser.UserId)
+    loadUserData()
+    local ud = UserData.users[uid]
+    local isReturning = ud ~= nil
+    if not ud then
+        ud = { visits = 0, settings = {} }
+        UserData.users[uid] = ud
+    end
+    ud.settings = ud.settings or {}
+    local S = ud.settings
+    S.layout = S.layout or {}
+    local layoutStore = S.layout
+    local remember = S.remember ~= false
+    ud.name = lpUser.Name
+    ud.visits = (ud.visits or 0) + 1
+    ud.lastSeen = os.time()
+    local function persist()
+        if remember then saveUserData() end
+    end
+    local function pref(key, default)
+        if remember and S[key] ~= nil then return S[key] end
+        return default
+    end
+    local defaults = {
+        accent = opts.Accent or Color3.fromRGB(255, 255, 255),
+        transparency = opts.Transparency or 0.1,
+        scale = opts.Scale or 1,
+        blur = opts.Blur ~= false,
+        intro = opts.Intro ~= false,
+        toggleKey = opts.ToggleKey or Enum.KeyCode.RightShift,
+    }
+    local accentStart = defaults.accent
+    if remember and type(S.accent) == "table" then
+        accentStart = Color3.fromRGB(S.accent[1] or 255, S.accent[2] or 255, S.accent[3] or 255)
+    end
+    Theme.Accent = accentStart
+    local toggleKey = defaults.toggleKey
+    if remember and S.toggleKey then
+        local okK, kc = pcall(function() return Enum.KeyCode[S.toggleKey] end)
+        if okK and kc then toggleKey = kc end
+    end
+    local startTransparency = pref("transparency", defaults.transparency)
+    local notifySide = pref("notifySide", "Right")
+    persist()
     local size = opts.Size or UDim2.fromOffset(580, 390)
     do -- keep the window inside small screens (phones)
         local cam = workspace.CurrentCamera
@@ -253,7 +319,7 @@ function Lumen:CreateWindow(opts)
         size = UDim2.fromOffset(math.min(size.X.Offset, vp.X - 24), math.min(size.Y.Offset, vp.Y - 70))
     end
     local expandTabs = opts.TabStyle == "Expand" -- icon-only tabs, the active one shows its name
-    local userScale = opts.Scale or 1
+    local userScale = math.clamp(pref("scale", defaults.scale), 0.6, 1.4)
 
     local parent = getGuiParent()
     local old = parent:FindFirstChild("LumenUI")
@@ -279,7 +345,7 @@ function Lumen:CreateWindow(opts)
         fn()
     end
 
-    local useIntro = opts.Intro ~= false
+    local useIntro = pref("intro", defaults.intro)
     local ready = not useIntro
     local destroying = false
     local visible = not useIntro
@@ -337,11 +403,20 @@ function Lumen:CreateWindow(opts)
         end)
     end
 
+    -- where the window was left the last time
+    local mainStart = UDim2.fromScale(0.5, 0.5)
+    if remember and type(layoutStore.__main) == "table" then
+        local m = layoutStore.__main
+        local cam0 = workspace.CurrentCamera
+        local vp0 = cam0 and cam0.ViewportSize or Vector2.new(1920, 1080)
+        mainStart = UDim2.new(0.5, math.clamp(m.x or 0, -vp0.X / 2 + 80, vp0.X / 2 - 80),
+            0.5, math.clamp(m.y or 0, -vp0.Y / 2 + 80, vp0.Y / 2 - 80))
+    end
     --// Main window (CanvasGroup => the whole window fades as one) -------------
     local main = new("CanvasGroup", {
         Name = "Main", Size = size, AnchorPoint = Vector2.new(0.5, 0.5),
-        Position = UDim2.fromScale(0.5, 0.5),
-        BackgroundColor3 = Theme.Bg, BackgroundTransparency = opts.Transparency or 0.1,
+        Position = mainStart,
+        BackgroundColor3 = Theme.Bg, BackgroundTransparency = startTransparency,
         BorderSizePixel = 0, GroupTransparency = useIntro and 1 or 0,
         Visible = not useIntro, Parent = gui,
     }, { corner(14), new("UIScale", { Scale = userScale }) })
@@ -381,7 +456,7 @@ function Lumen:CreateWindow(opts)
 
     --// Blur behind the window only: a glass part right in front of the camera
     --// exactly over the window + DepthOfField near-blur (same trick as Rayfield)
-    local blurEnabled = opts.Blur ~= false
+    local blurEnabled = pref("blur", defaults.blur)
     local blurOn = false
     for _, v in ipairs(Lighting:GetChildren()) do
         if v.Name == "LumenDoF" then v:Destroy() end
@@ -408,7 +483,8 @@ function Lumen:CreateWindow(opts)
         local cam = workspace.CurrentCamera
         if not cam then return end
         if glass.Parent ~= cam then glass.Parent = cam end
-        local pos, sz = main.AbsolutePosition, main.AbsoluteSize
+        local pos, sz = main.AbsolutePosition + Vector2.new(5, 5), main.AbsoluteSize - Vector2.new(10, 10)
+        if sz.X < 4 or sz.Y < 4 then return end
         local d = 0.95
         local tl = cam:ScreenPointToRay(pos.X, pos.Y, d).Origin
         local tr = cam:ScreenPointToRay(pos.X + sz.X, pos.Y, d).Origin
@@ -455,17 +531,24 @@ function Lumen:CreateWindow(opts)
     })
     onAccent(function() logo.BackgroundColor3 = Theme.Accent end)
 
-    local titleW = textWidth(titleText, 14, Enum.Font.GothamBold)
+    local maxTitleW = math.floor(size.X.Offset * 0.26)
+    local titleW = math.min(textWidth(titleText, 14, Enum.Font.GothamBold) + 4, maxTitleW)
     label({
-        Text = titleText, Font = Enum.Font.GothamBold, TextSize = 14,
-        Position = UDim2.fromOffset(52, 0), Size = UDim2.fromOffset(titleW + 4, 48), Parent = top,
+        Text = titleText, Font = Enum.Font.GothamBold, TextSize = 14, TextTruncate = Enum.TextTruncate.AtEnd,
+        Position = UDim2.fromOffset(52, 0), Size = UDim2.fromOffset(titleW, 48), Parent = top,
     })
+    local leftBound = 52 + titleW + 12 -- the tab bar never starts left of this
     if opts.Subtitle then
-        label({
-            Text = opts.Subtitle, TextColor3 = Theme.Sub, TextSize = 11,
-            Position = UDim2.fromOffset(52 + titleW + 10, 1), Size = UDim2.fromOffset(80, 48), Parent = top,
-        })
+        local subW = math.min(textWidth(opts.Subtitle, 11) + 4, 90)
+        if leftBound + subW < size.X.Offset * 0.34 then
+            label({
+                Text = opts.Subtitle, TextColor3 = Theme.Sub, TextSize = 11, TextTruncate = Enum.TextTruncate.AtEnd,
+                Position = UDim2.fromOffset(52 + titleW + 8, 1), Size = UDim2.fromOffset(subW, 48), Parent = top,
+            })
+            leftBound = 52 + titleW + 8 + subW + 12
+        end
     end
+    local rightBound = size.X.Offset - 84 -- ... and never ends right of this (hide / close buttons)
 
     local function headerButton(xOffset, iconName, isDash)
         local b = new("TextButton", {
@@ -499,7 +582,7 @@ function Lumen:CreateWindow(opts)
 
     -- pill tab bar (center)
     local tabBar = new("Frame", {
-        AnchorPoint = Vector2.new(0.5, 0.5), Position = UDim2.new(0.5, 0, 0, 24),
+        AnchorPoint = Vector2.new(0, 0.5), Position = UDim2.fromOffset(leftBound, 24),
         Size = UDim2.fromOffset(8, 36), BackgroundColor3 = Theme.Element,
         BackgroundTransparency = 0.4, BorderSizePixel = 0, Parent = top,
     }, { circle(), stroke(Theme.Stroke, 1, 0.5) })
@@ -523,21 +606,26 @@ function Lumen:CreateWindow(opts)
     })
 
     -- dragging (eased follow)
-    local dragging, dragStart, startPos = false, nil, nil
+    local dragging, dragStart, startPos, lastMain = false, nil, nil, nil
     top.InputBegan:Connect(function(i)
         if i.UserInputType == Enum.UserInputType.MouseButton1 or i.UserInputType == Enum.UserInputType.Touch then
-            dragging, dragStart, startPos = true, i.Position, main.Position
+            dragging, dragStart, startPos, lastMain = true, i.Position, main.Position, nil
             i.Changed:Connect(function()
-                if i.UserInputState == Enum.UserInputState.End then dragging = false end
+                if i.UserInputState == Enum.UserInputState.End then
+                    dragging = false
+                    if lastMain then
+                        layoutStore.__main = { x = lastMain.X.Offset, y = lastMain.Y.Offset }
+                        persist()
+                    end
+                end
             end)
         end
     end)
     connect(UIS.InputChanged, function(i)
         if dragging and (i.UserInputType == Enum.UserInputType.MouseMovement or i.UserInputType == Enum.UserInputType.Touch) then
             local d = i.Position - dragStart
-            tw(main, {
-                Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + d.X, startPos.Y.Scale, startPos.Y.Offset + d.Y),
-            }, 0.25, ES.Quint)
+            lastMain = UDim2.new(startPos.X.Scale, startPos.X.Offset + d.X, startPos.Y.Scale, startPos.Y.Offset + d.Y)
+            tw(main, { Position = lastMain }, 0.25, ES.Quint)
         end
     end)
 
@@ -577,6 +665,7 @@ function Lumen:CreateWindow(opts)
         local ntype = o.Type or "info"
         local tint = NOTIFY_TINT[ntype]
         local W = 300
+        local nd = (notifySide == "Left") and -1 or 1
         local title = o.Title or titleText
         local text = o.Content or o.Text or ""
         local textH = (text == "") and 0 or TextService:GetTextSize(text, 12, Enum.Font.Gotham, Vector2.new(W - 74, 1000)).Y
@@ -588,7 +677,7 @@ function Lumen:CreateWindow(opts)
             LayoutOrder = notifyOrder, Parent = holder,
         })
         local card = new("CanvasGroup", {
-            Size = UDim2.fromOffset(W, H), Position = UDim2.new(0, 60, 0, 0),
+            Size = UDim2.fromOffset(W, H), Position = UDim2.new(0, 60 * nd, 0, 0),
             BackgroundColor3 = Theme.Panel, BackgroundTransparency = 0.05,
             BorderSizePixel = 0, GroupTransparency = 1, Parent = cont,
         }, { corner(12) })
@@ -631,7 +720,7 @@ function Lumen:CreateWindow(opts)
         local function dismiss()
             if dismissed then return end
             dismissed = true
-            tw(card, { Position = UDim2.new(0, 80, 0, 0), GroupTransparency = 1 }, 0.45, ES.Quint)
+            tw(card, { Position = UDim2.new(0, 80 * nd, 0, 0), GroupTransparency = 1 }, 0.45, ES.Quint)
             task.wait(0.35)
             tw(cont, { Size = UDim2.fromOffset(W, 0) }, 0.3, ES.Quint)
             task.wait(0.35)
@@ -799,7 +888,9 @@ function Lumen:CreateWindow(opts)
     --// Tabs --------------------------------------------------------------------
     local current
     local barW = 4
-
+    local tabsByName = {}
+    -- where the tab bar starts: centered, but never over the title or the buttons
+    local function barX(w) return math.max(math.floor(size.X.Offset / 2 - w / 2), leftBound) end
     -- "Expand" style: every tab is an icon, the selected one grows to show its name
     local function layoutTabs(instant)
         local x = 4
@@ -812,8 +903,25 @@ function Lumen:CreateWindow(opts)
             x += w + 4
         end
         barW = x
-        tw(tabBar, { Size = UDim2.fromOffset(x, 36) }, dur)
+        tw(tabBar, { Size = UDim2.fromOffset(x, 36), Position = UDim2.fromOffset(barX(x), 24) }, dur)
     end
+    -- too many tabs for the header? switch to icon-only tabs automatically
+    local function convertToExpand()
+        expandTabs = true
+        for _, tb in ipairs(tabs) do
+            if not tb.Icon then
+                local holderI = new("Frame", {
+                    Size = UDim2.fromOffset(16, 16), Position = UDim2.fromOffset(11, 6),
+                    BackgroundTransparency = 1, Parent = tb.Btn,
+                })
+                tb.Icon = makeIcon(holderI, tb.Name, 13, tb.Active and Theme.Accent or Theme.Sub)
+                tb.Label.Position = UDim2.fromOffset(33, 0)
+            end
+            if not tb.Active then tb.Label.TextTransparency = 1 end
+        end
+        layoutTabs(true)
+    end
+
     local function selectTab(tab, instant)
         if current == tab then return end
         local prev = current
@@ -850,81 +958,897 @@ function Lumen:CreateWindow(opts)
         end
     end
 
-    function Window:CreateTab(name, icon)
-        if type(name) == "table" then return Window:AddTab(name) end
-        return Window:AddTab({ Name = name, Icon = icon })
+    --// ===== HUD core: damage tracker, body widget, heal meter, timers ===============
+    local lp = Players.LocalPlayer
+
+    local GROUPS = { "Head", "Torso", "LeftArm", "RightArm", "LeftLeg", "RightLeg" }
+    local GROUP_LABEL = {
+        Head = "Head", Torso = "Torso", LeftArm = "Left arm", RightArm = "Right arm",
+        LeftLeg = "Left leg", RightLeg = "Right leg",
+    }
+    local GROUP_PARTS = {
+        Head = { "Head" },
+        Torso = { "UpperTorso", "LowerTorso", "Torso" },
+        LeftArm = { "LeftUpperArm", "LeftLowerArm", "LeftHand", "Left Arm" },
+        RightArm = { "RightUpperArm", "RightLowerArm", "RightHand", "Right Arm" },
+        LeftLeg = { "LeftUpperLeg", "LeftLowerLeg", "LeftFoot", "Left Leg" },
+        RightLeg = { "RightUpperLeg", "RightLowerLeg", "RightFoot", "Right Leg" },
+    }
+    -- where the floating numbers appear (front view: the character's left side is on the viewer's right)
+    local GROUP_POS = {
+        Head = UDim2.fromScale(0.5, 0.1), Torso = UDim2.fromScale(0.5, 0.36),
+        LeftArm = UDim2.fromScale(0.8, 0.36), RightArm = UDim2.fromScale(0.2, 0.36),
+        LeftLeg = UDim2.fromScale(0.6, 0.74), RightLeg = UDim2.fromScale(0.4, 0.74),
+    }
+    local PART_GROUP = {}
+    for g, names in pairs(GROUP_PARTS) do
+        for _, n in ipairs(names) do PART_GROUP[n] = g end
     end
 
-    function Window:AddTab(o)
-        if type(o) == "string" then o = { Name = o } end
-        o = o or {}
-        local name = o.Name or "Tab"
-        local iconName = o.Icon or o.Image
-        if expandTabs and not iconName then iconName = name end
-
-        local tw_ = textWidth(name, 13)
-        local iconW = iconName and 20 or 0
-        local w = math.floor(tw_ + iconW + 30)
-        if expandTabs then w = 36 end
-        local x = barW
-        barW = barW + w + 4
-        tabBar.Size = UDim2.fromOffset(barW, 36)
-
-        local btn = new("TextButton", {
-            Size = UDim2.fromOffset(w, 28), Position = UDim2.fromOffset(x, 4),
-            BackgroundTransparency = 1, Text = "", AutoButtonColor = false, Parent = tabBar,
-        })
-        local icon
-        if iconName then
-            local holderI = new("Frame", {
-                Size = UDim2.fromOffset(16, 16), Position = UDim2.fromOffset(11, 6),
-                BackgroundTransparency = 1, Parent = btn,
-            })
-            icon = makeIcon(holderI, iconName, 13, Theme.Sub)
+    -- limb name (any naming style) -> group, or nil
+    local function groupFromName(name)
+        if PART_GROUP[name] then return PART_GROUP[name] end
+        local n = (name:lower():gsub("[%s_%-]", ""))
+        if n:find("head") then return "Head" end
+        local left, right = n:find("left") ~= nil, n:find("right") ~= nil
+        if n:find("arm") or n:find("hand") then
+            if left then return "LeftArm" elseif right then return "RightArm" end
+        elseif n:find("leg") or n:find("foot") then
+            if left then return "LeftLeg" elseif right then return "RightLeg" end
         end
-        local lbl = label({
-            Text = name, TextColor3 = Theme.Sub,
-            Position = UDim2.fromOffset(13 + iconW, 0), Size = UDim2.fromOffset(tw_ + 6, 28), Parent = btn,
-        })
-        if expandTabs then lbl.TextTransparency = 1 end
+        if n:find("torso") or n:find("chest") or n:find("spine") then return "Torso" end
+        return nil
+    end
 
-        local pageG = new("CanvasGroup", {
-            Size = UDim2.fromScale(1, 1), BackgroundTransparency = 1, BorderSizePixel = 0,
-            GroupTransparency = 1, Visible = false, Parent = content,
+    local function groupParts(char)
+        local t = {}
+        for _, g in ipairs(GROUPS) do t[g] = {} end
+        if not char then return t end
+        for _, d in ipairs(char:GetChildren()) do
+            if d:IsA("BasePart") then
+                local g = PART_GROUP[d.Name]
+                if g then table.insert(t[g], d) end
+            end
+        end
+        return t
+    end
+
+    local function fmtNum(a)
+        if a >= 1 then return tostring(math.floor(a + 0.5)) end
+        return string.format("%.1f", a)
+    end
+
+    --// Tracker: watches one player's health. Reports damage (with the body part when it can
+    --// be known), healing speed, and lets games report hits by hand with T:Report(...).
+    local function newTracker(plr)
+        local T = { Player = plr, Health = 0, MaxHealth = 100, HealRate = 0, Healing = false, Feed = {}, _l = {} }
+        local conns, charConns = {}, {}
+        local gains, limbEvents = {}, {}
+        local lastHealth, lastGain = nil, 0
+        local dead = false
+
+        local function fire(kind, ...)
+            local list = T._l[kind]
+            if not list then return end
+            for _, fn in ipairs(list) do safe(fn, ...) end
+        end
+        function T:On(kind, fn)
+            T._l[kind] = T._l[kind] or {}
+            table.insert(T._l[kind], fn)
+            return function()
+                local l = T._l[kind]
+                local i = l and table.find(l, fn)
+                if i then table.remove(l, i) end
+            end
+        end
+        -- source: "exact" (game reported / limb values), "estimated" (aim ray), "unknown"
+        function T:Report(group, amount, source, attacker)
+            local e = {
+                t = os.clock(), group = group, amount = amount,
+                source = source or (group and "exact" or "unknown"), attacker = attacker,
+            }
+            table.insert(T.Feed, 1, e)
+            if #T.Feed > 20 then table.remove(T.Feed) end
+            fire("damage", e.group, e.amount, e.source, e.attacker)
+        end
+        function T:ReportHeal(amount)
+            local now = os.clock()
+            table.insert(gains, { t = now, amount = amount })
+            lastGain = now
+            fire("heal", amount)
+        end
+
+        -- best guess of which body part was hit: the enemy that is looking at us, and the
+        -- body part closest to his aim ray (only a guess, it is marked as "estimated")
+        local function estimate(char)
+            local root = char:FindFirstChild("HumanoidRootPart")
+            if not root then return nil end
+            local cam = workspace.CurrentCamera
+            local best, bestScore, bestPlr
+            for _, p in ipairs(Players:GetPlayers()) do
+                if p ~= plr then
+                    local c = p.Character
+                    local head = c and c:FindFirstChild("Head")
+                    local hum = c and c:FindFirstChildOfClass("Humanoid")
+                    if head and hum and hum.Health > 0 then
+                        local to = root.Position - head.Position
+                        local dist = to.Magnitude
+                        if dist > 0.1 and dist < 300 then
+                            local origin, look = head.Position, head.CFrame.LookVector
+                            if p == lp and cam then origin, look = cam.CFrame.Position, cam.CFrame.LookVector end
+                            local dot = look:Dot(to.Unit)
+                            if dot > 0.7 then
+                                local score = dot - dist / 1000
+                                if not bestScore or score > bestScore then
+                                    best, bestScore, bestPlr = { origin = origin, dir = look }, score, p
+                                end
+                            end
+                        end
+                    end
+                end
+            end
+            if not best then return nil end
+            local bestG, bestD
+            for g, list in pairs(groupParts(char)) do
+                for _, part in ipairs(list) do
+                    local rel = part.Position - best.origin
+                    local d = (rel - best.dir * rel:Dot(best.dir)).Magnitude - part.Size.Magnitude / 4
+                    if not bestD or d < bestD then bestD, bestG = d, g end
+                end
+            end
+            if bestG and bestD < 3 then return bestG, bestPlr end
+            return nil, bestPlr
+        end
+
+        -- games that keep per-limb health (values or attributes) give an exact answer
+        local function watchLimbs(char)
+            local function limbChanged(g, newV, old)
+                limbEvents[g] = { t = os.clock(), delta = newV - old }
+            end
+            local function hook(inst)
+                if (inst:IsA("NumberValue") or inst:IsA("IntValue")) then
+                    local nm = inst.Name:lower()
+                    if nm:find("health") or nm:find("hp") then
+                        local g = groupFromName(inst.Name) or (inst.Parent and groupFromName(inst.Parent.Name))
+                        if g then
+                            local last = inst.Value
+                            table.insert(charConns, inst.Changed:Connect(function(v)
+                                limbChanged(g, v, last)
+                                last = v
+                            end))
+                        end
+                    end
+                elseif inst:IsA("BasePart") then
+                    local g = groupFromName(inst.Name)
+                    if g then
+                        for attr, val in pairs(inst:GetAttributes()) do
+                            local an = attr:lower()
+                            if type(val) == "number" and (an:find("health") or an:find("hp")) then
+                                local last = val
+                                table.insert(charConns, inst:GetAttributeChangedSignal(attr):Connect(function()
+                                    local v = inst:GetAttribute(attr)
+                                    if type(v) == "number" then
+                                        limbChanged(g, v, last)
+                                        last = v
+                                    end
+                                end))
+                            end
+                        end
+                    end
+                end
+            end
+            for _, d in ipairs(char:GetDescendants()) do hook(d) end
+            table.insert(charConns, char.DescendantAdded:Connect(hook))
+        end
+
+        local function attach(char)
+            for _, c in ipairs(charConns) do pcall(function() c:Disconnect() end) end
+            table.clear(charConns)
+            limbEvents = {}
+            local hum = char:WaitForChild("Humanoid", 8)
+            if dead or not hum then return end
+            lastHealth = hum.Health
+            T.Health, T.MaxHealth = hum.Health, hum.MaxHealth
+            fire("char", char)
+            watchLimbs(char)
+            table.insert(charConns, hum.HealthChanged:Connect(function(h)
+                local d = h - (lastHealth or h)
+                lastHealth = h
+                T.Health, T.MaxHealth = h, hum.MaxHealth
+                if d < -0.01 then
+                    local amount = -d
+                    task.delay(0.06, function() -- let limb values update first
+                        if dead then return end
+                        local group, source, attacker
+                        local now, worst = os.clock(), 0
+                        for g, ev in pairs(limbEvents) do
+                            if now - ev.t < 0.4 and ev.delta < worst then worst, group = ev.delta, g end
+                        end
+                        if group then
+                            source = "exact"
+                        else
+                            group, attacker = estimate(char)
+                            source = group and "estimated" or "unknown"
+                        end
+                        T:Report(group, amount, source, attacker)
+                    end)
+                elseif d > 0.01 then
+                    T:ReportHeal(d)
+                end
+                fire("health", h, hum.MaxHealth)
+            end))
+        end
+
+        table.insert(conns, plr.CharacterAdded:Connect(function(c) task.spawn(attach, c) end))
+        if plr.Character then task.spawn(attach, plr.Character) end
+
+        table.insert(conns, RunService.Heartbeat:Connect(function()
+            local now = os.clock()
+            local sum, oldest = 0, now
+            for i = #gains, 1, -1 do
+                local g = gains[i]
+                if now - g.t > 3 then
+                    table.remove(gains, i)
+                else
+                    sum += g.amount
+                    if g.t < oldest then oldest = g.t end
+                end
+            end
+            T.HealRate = sum / math.clamp(now - oldest, 1, 3)
+            T.Healing = sum > 0 and (now - lastGain) < 1.2
+        end))
+
+        function T:Destroy()
+            dead = true
+            for _, c in ipairs(conns) do pcall(function() c:Disconnect() end) end
+            for _, c in ipairs(charConns) do pcall(function() c:Disconnect() end) end
+        end
+        return T
+    end
+
+    local trackers = {}
+    local function getTracker(plr)
+        plr = plr or lp
+        if not trackers[plr] then trackers[plr] = newTracker(plr) end
+        return trackers[plr]
+    end
+    table.insert(destroyCallbacks, function()
+        for _, t in pairs(trackers) do pcall(function() t:Destroy() end) end
+    end)
+
+    local function isShown(g)
+        local o = g
+        while o and o ~= gui do
+            if o:IsA("GuiObject") and not o.Visible then return false end
+            o = o.Parent
+        end
+        return true
+    end
+
+    --// Body widget: the player's model (or a simple figure) lights up where damage lands
+    local SCHEM_BASE = Color3.fromRGB(95, 95, 108)
+    local HIT_COLOR = Color3.fromRGB(255, 60, 60)
+    local HEAL_COLOR = Color3.fromRGB(90, 230, 150)
+
+    local function buildBody(f, o2)
+        local mode = o2.Mode or "Model"
+        local vpH = o2.ViewportHeight or 200
+        local showFeed = o2.ShowFeed ~= false
+        local feedLines = o2.FeedLines or 4
+        local tracker = getTracker(o2.Target or lp)
+        local total = 10 + vpH + 8 + 34 + 6 + 18 + (showFeed and (6 + feedLines * 14) or 0) + 10
+        f.Size = UDim2.new(1, 0, 0, total)
+
+        local heat = {}
+        for _, g in ipairs(GROUPS) do heat[g] = 0 end
+        local healGlow = 0
+
+        local stage = new("Frame", {
+            Position = UDim2.fromOffset(10, 10), Size = UDim2.new(1, -20, 0, vpH),
+            BackgroundTransparency = 1, Parent = f,
         })
-        local page = new("ScrollingFrame", {
-            Size = UDim2.fromScale(1, 1), BackgroundTransparency = 1, BorderSizePixel = 0,
-            ScrollBarThickness = 2, ScrollBarImageColor3 = Theme.Stroke,
-            CanvasSize = UDim2.new(), AutomaticCanvasSize = Enum.AutomaticSize.Y,
-            Parent = pageG,
+        local floatLayer = new("Frame", {
+            Size = UDim2.fromScale(1, 1), BackgroundTransparency = 1, ZIndex = 6, Parent = stage,
+        })
+
+        local vp, cam, partsByGroup
+        local origColors, fig = {}, {}
+        local yaw, dragging, lastDrag = 0, false, 0
+        local dist, center = 10, Vector3.zero
+
+        local function colorFor(base, g)
+            local c = base:Lerp(HIT_COLOR, heat[g])
+            if healGlow > 0.01 then c = c:Lerp(HEAL_COLOR, healGlow * (1 - heat[g])) end
+            return c
+        end
+        local function applyColors()
+            if partsByGroup then
+                for g, list in pairs(partsByGroup) do
+                    for _, p in ipairs(list) do
+                        local base = origColors[p]
+                        if base and p.Parent then p.Color = colorFor(base, g) end
+                    end
+                end
+            end
+            for g, fr in pairs(fig) do fr.BackgroundColor3 = colorFor(SCHEM_BASE, g) end
+        end
+
+        local schemHolder
+        local function clearVisual()
+            if vp then vp:Destroy() vp = nil end
+            if schemHolder then schemHolder:Destroy() schemHolder = nil end
+            table.clear(fig)
+            partsByGroup, origColors = nil, {}
+        end
+
+        local function buildSchematic()
+            clearVisual()
+            schemHolder = new("Frame", {
+                Size = UDim2.fromScale(1, 1), BackgroundTransparency = 1, Parent = stage,
+            })
+            local holder = schemHolder
+            local s = vpH / 200
+            local function part(g, x, y, w, h, r)
+                local fr = new("Frame", {
+                    AnchorPoint = Vector2.new(0.5, 0), Position = UDim2.new(0.5, x * s, 0, y * s),
+                    Size = UDim2.fromOffset(w * s, h * s), BackgroundColor3 = SCHEM_BASE,
+                    BorderSizePixel = 0, Parent = holder,
+                }, { r == 0 and corner(h * s / 2) or corner(r) })
+                fig[g] = fr
+            end
+            -- front view: the character's left side is drawn on the right
+            part("Head", 0, 8, 30, 30, 0)
+            part("Torso", 0, 42, 50, 66, 8)
+            part("RightArm", -37, 44, 14, 62, 6)
+            part("LeftArm", 37, 44, 14, 62, 6)
+            part("RightLeg", -12, 112, 22, 70, 6)
+            part("LeftLeg", 12, 112, 22, 70, 6)
+        end
+
+        local function buildModel(char)
+            clearVisual()
+            if not char then return false end
+            pcall(function() char.Archivable = true end)
+            local ok, clone = pcall(function() return char:Clone() end)
+            if not ok or not clone then return false end
+            for _, d in ipairs(clone:GetDescendants()) do
+                if d:IsA("LuaSourceContainer") or d:IsA("Sound") or d:IsA("Humanoid") or d:IsA("Tool")
+                    or d:IsA("Animator") or d:IsA("ForceField") then
+                    d:Destroy()
+                elseif d:IsA("Motor6D") then
+                    d.Transform = CFrame.new()
+                elseif d:IsA("BasePart") then
+                    d.Anchored = true
+                    d.CanCollide = false
+                    d.CanQuery = false
+                    d.CanTouch = false
+                end
+            end
+            vp = new("ViewportFrame", {
+                Size = UDim2.fromScale(1, 1), BackgroundTransparency = 1, BorderSizePixel = 0,
+                Ambient = Color3.fromRGB(190, 190, 195), LightColor = Color3.fromRGB(255, 255, 255),
+                LightDirection = Vector3.new(-0.6, -1, 0.8), Parent = stage,
+            })
+            cam = new("Camera", { FieldOfView = 35 })
+            vp.CurrentCamera = cam
+            cam.Parent = vp
+            clone.Parent = vp
+            local pivOk = pcall(function() clone:PivotTo(CFrame.new(0, 0, 0)) end)
+            local cf, size = clone:GetBoundingBox()
+            center = cf.Position
+            dist = (size.Y / 2) / math.tan(math.rad(cam.FieldOfView / 2)) * 1.25
+            partsByGroup = groupParts(clone)
+            for _, list in pairs(partsByGroup) do
+                for _, p in ipairs(list) do origColors[p] = p.Color end
+            end
+            vp.InputBegan:Connect(function(i)
+                if i.UserInputType == Enum.UserInputType.MouseButton1 or i.UserInputType == Enum.UserInputType.Touch then
+                    dragging = true
+                    i.Changed:Connect(function()
+                        if i.UserInputState == Enum.UserInputState.End then
+                            dragging = false
+                            lastDrag = os.clock()
+                        end
+                    end)
+                end
+            end)
+            return pivOk
+        end
+
+        local lastMouseX
+        local function rebuild()
+            if mode == "Schematic" then
+                buildSchematic()
+                return
+            end
+            local ok = false
+            if tracker.Player.Character then ok = buildModel(tracker.Player.Character) end
+            if not ok then buildSchematic() end
+        end
+
+        -- text rows under the figure
+        local y0 = 10 + vpH + 8
+        label({
+            Text = "HP", Font = Enum.Font.GothamBold, TextSize = 11, TextColor3 = Theme.Sub,
+            Position = UDim2.fromOffset(14, y0), Size = UDim2.fromOffset(40, 14), Parent = f,
+        })
+        local hpText = label({
+            Text = "--", Font = Enum.Font.GothamBold, TextSize = 12,
+            TextXAlignment = Enum.TextXAlignment.Right, AnchorPoint = Vector2.new(1, 0),
+            Position = UDim2.new(1, -14, 0, y0 - 1), Size = UDim2.fromOffset(120, 16), Parent = f,
+        })
+        local hpTrack = new("Frame", {
+            Position = UDim2.fromOffset(14, y0 + 20), Size = UDim2.new(1, -28, 0, 8),
+            BackgroundColor3 = Theme.Hover, BorderSizePixel = 0, Parent = f,
+        }, { circle() })
+        local hpFill = new("Frame", {
+            Size = UDim2.fromScale(1, 1), BackgroundColor3 = HEAL_COLOR, BorderSizePixel = 0, Parent = hpTrack,
+        }, { circle() })
+
+        local y1 = y0 + 34 + 6
+        local healDot = new("Frame", {
+            Position = UDim2.fromOffset(14, y1 + 5), Size = UDim2.fromOffset(8, 8),
+            BackgroundColor3 = Theme.Sub, BorderSizePixel = 0, Parent = f,
+        }, { circle() })
+        local healL = label({
+            Text = "Not healing", Font = Enum.Font.Gotham, TextSize = 12, TextColor3 = Theme.Sub,
+            Position = UDim2.fromOffset(30, y1), Size = UDim2.new(1, -44, 0, 18), Parent = f,
+        })
+        local feedL
+        if showFeed then
+            feedL = label({
+                Text = "", RichText = true, Font = Enum.Font.Gotham, TextSize = 11, TextYAlignment = Enum.TextYAlignment.Top,
+                Position = UDim2.fromOffset(14, y1 + 24), Size = UDim2.new(1, -28, 0, feedLines * 14), Parent = f,
+            })
+        end
+
+        local function renderFeed()
+            if not feedL then return end
+            local lines = {}
+            for i = 1, math.min(feedLines, #tracker.Feed) do
+                local e = tracker.Feed[i]
+                local col = (e.source == "exact") and "255,110,110" or (e.source == "estimated" and "255,175,90" or "150,150,160")
+                local where = e.group and GROUP_LABEL[e.group] or "Unknown"
+                local tag = (e.source == "estimated") and " (est.)" or ""
+                local ago = os.clock() - e.t
+                local agoStr = ago < 60 and string.format("%ds", math.floor(ago)) or string.format("%dm", math.floor(ago / 60))
+                lines[i] = string.format('<font color="rgb(%s)">-%s</font>  %s%s  <font color="rgb(120,120,132)">%s ago</font>',
+                    col, fmtNum(e.amount), where, tag, agoStr)
+            end
+            feedL.Text = #lines > 0 and table.concat(lines, "\n")
+                or '<font color="rgb(120,120,132)">No damage taken</font>'
+        end
+
+        local function floatText(text, color, pos)
+            local l = label({
+                Text = text, Font = Enum.Font.GothamBold, TextSize = 15, TextColor3 = color,
+                TextXAlignment = Enum.TextXAlignment.Center, TextStrokeTransparency = 0.5,
+                AnchorPoint = Vector2.new(0.5, 0.5), Position = pos, Size = UDim2.fromOffset(80, 20),
+                Parent = floatLayer,
+            })
+            tw(l, { Position = UDim2.new(pos.X.Scale, pos.X.Offset, pos.Y.Scale, pos.Y.Offset - 34), TextTransparency = 1,
+                TextStrokeTransparency = 1 }, 1.2, ES.Quint)
+            task.delay(1.3, function() l:Destroy() end)
+        end
+
+        local function onDamage(group, amount, source)
+            if group and heat[group] ~= nil then
+                heat[group] = math.min(1, heat[group] + math.clamp(amount / 25, 0.4, 1))
+            else
+                for _, g in ipairs(GROUPS) do heat[g] = math.min(1, heat[g] + 0.2) end
+            end
+            local col = (source == "exact") and Color3.fromRGB(255, 100, 100)
+                or (source == "estimated" and Color3.fromRGB(255, 175, 90) or Color3.fromRGB(170, 170, 180))
+            floatText("-" .. fmtNum(amount) .. (source == "unknown" and "?" or ""), col,
+                (group and GROUP_POS[group]) or UDim2.fromScale(0.5, 0.5))
+            renderFeed()
+        end
+        local function onHeal(amount)
+            healGlow = math.min(0.4, healGlow + 0.25)
+            floatText("+" .. fmtNum(amount), HEAL_COLOR, GROUP_POS.Torso)
+        end
+
+        local unsub = {}
+        local function subscribe()
+            for _, u in ipairs(unsub) do u() end
+            unsub = {
+                tracker:On("damage", onDamage),
+                tracker:On("heal", onHeal),
+                tracker:On("char", function()
+                    task.delay(0.6, function() if f.Parent then rebuild() end end)
+                end),
+            }
+        end
+        subscribe()
+        rebuild()
+        renderFeed()
+
+        local acc, lastFeed = 0, 0
+        local conn
+        conn = connect(RunService.RenderStepped, function(dt)
+            if not f.Parent then
+                for _, u in ipairs(unsub) do u() end
+                conn:Disconnect()
+                return
+            end
+            if not isShown(f) then return end
+            -- fade the red / green glow and orbit the camera
+            local dirty = healGlow > 0.005
+            healGlow = math.max(0, healGlow - dt * 0.6)
+            for _, g in ipairs(GROUPS) do
+                if heat[g] > 0 then
+                    heat[g] = math.max(0, heat[g] - dt * 0.45)
+                    dirty = true
+                end
+            end
+            if tracker.Healing then
+                healGlow = math.max(healGlow, 0.12 + 0.1 * math.sin(os.clock() * 5))
+                dirty = true
+            end
+            if dirty then applyColors() end
+            if cam then
+                if not dragging and os.clock() - lastDrag > 3 then yaw -= yaw * math.min(dt * 3, 1) end
+                if dragging then
+                    local m = UIS:GetMouseLocation()
+                    if lastMouseX then yaw -= (m.X - lastMouseX) * 0.012 end
+                    lastMouseX = m.X
+                else
+                    lastMouseX = nil
+                end
+                local pos = center + (CFrame.Angles(0, yaw, 0) * Vector3.new(0, 0, -dist))
+                cam.CFrame = CFrame.lookAt(pos, center)
+            end
+            -- text rows (10 times a second)
+            acc += dt
+            if acc >= 0.1 then
+                acc = 0
+                local hp, mx = tracker.Health, math.max(tracker.MaxHealth, 1)
+                hpText.Text = string.format("%d / %d", math.floor(hp + 0.5), math.floor(mx + 0.5))
+                local frac = math.clamp(hp / mx, 0, 1)
+                tw(hpFill, {
+                    Size = UDim2.fromScale(frac, 1),
+                    BackgroundColor3 = HIT_COLOR:Lerp(HEAL_COLOR, frac),
+                }, 0.2)
+                if tracker.Healing then
+                    healL.Text = string.format("Healing  +%.1f HP/s", tracker.HealRate)
+                    healL.TextColor3 = HEAL_COLOR
+                    healDot.BackgroundColor3 = HEAL_COLOR
+                    healDot.BackgroundTransparency = 0.5 - 0.5 * math.sin(os.clock() * 6) * 0.5
+                else
+                    healL.Text = "Not healing"
+                    healL.TextColor3 = Theme.Sub
+                    healDot.BackgroundColor3 = Theme.Sub
+                    healDot.BackgroundTransparency = 0
+                end
+            end
+            if os.clock() - lastFeed > 0.5 then
+                lastFeed = os.clock()
+                renderFeed()
+            end
+        end)
+
+        local obj = { Tracker = tracker }
+        -- report a hit by hand (use it from game modules): group = Head | Torso | LeftArm | RightArm | LeftLeg | RightLeg
+        function obj:Report(group, amount, source) tracker:Report(group, amount or 10, source or "exact") end
+        function obj:ReportHeal(amount) tracker:ReportHeal(amount or 5) end
+        function obj:SetTarget(plr)
+            tracker = getTracker(plr)
+            subscribe()
+            rebuild()
+            renderFeed()
+        end
+        function obj:Rebuild() rebuild() end
+        function obj:Clear()
+            table.clear(tracker.Feed)
+            for _, g in ipairs(GROUPS) do heat[g] = 0 end
+            applyColors()
+            renderFeed()
+        end
+        return obj
+    end
+
+    --// Heal meter: is the player healing right now, and how fast
+    local function buildHeal(f, o2)
+        f.Size = UDim2.new(1, 0, 0, 66)
+        local tracker = getTracker(o2.Target or lp)
+        local maxRate = o2.MaxRate or 10
+
+        local badge = new("Frame", {
+            Position = UDim2.fromOffset(14, 14), Size = UDim2.fromOffset(38, 38),
+            BackgroundColor3 = Theme.Element, BorderSizePixel = 0, Parent = f,
+        }, { circle() })
+        local plusA = new("Frame", {
+            AnchorPoint = Vector2.new(0.5, 0.5), Position = UDim2.fromScale(0.5, 0.5),
+            Size = UDim2.fromOffset(16, 4), BackgroundColor3 = Theme.Sub, BorderSizePixel = 0, Parent = badge,
+        }, { corner(2) })
+        local plusB = new("Frame", {
+            AnchorPoint = Vector2.new(0.5, 0.5), Position = UDim2.fromScale(0.5, 0.5),
+            Size = UDim2.fromOffset(4, 16), BackgroundColor3 = Theme.Sub, BorderSizePixel = 0, Parent = badge,
+        }, { corner(2) })
+        local title = label({
+            Text = "Not healing", Font = Enum.Font.GothamBold, TextSize = 14,
+            Position = UDim2.fromOffset(64, 10), Size = UDim2.new(1, -150, 0, 18), Parent = f,
+        })
+        local sub = label({
+            Text = "+0.0 HP/s", Font = Enum.Font.Gotham, TextSize = 12, TextColor3 = Theme.Sub,
+            Position = UDim2.fromOffset(64, 30), Size = UDim2.new(1, -150, 0, 16), Parent = f,
+        })
+        local hpL = label({
+            Text = "--", Font = Enum.Font.GothamBold, TextSize = 12, TextXAlignment = Enum.TextXAlignment.Right,
+            AnchorPoint = Vector2.new(1, 0), Position = UDim2.new(1, -14, 0, 12), Size = UDim2.fromOffset(90, 16), Parent = f,
+        })
+        local track = new("Frame", {
+            Position = UDim2.new(0, 14, 1, -10), Size = UDim2.new(1, -28, 0, 4),
+            BackgroundColor3 = Theme.Hover, BorderSizePixel = 0, Parent = f,
+        }, { circle() })
+        local fill = new("Frame", {
+            Size = UDim2.fromScale(0, 1), BackgroundColor3 = HEAL_COLOR, BorderSizePixel = 0, Parent = track,
+        }, { circle() })
+
+        local wasHealing = false
+        local acc = 0
+        local conn
+        conn = connect(RunService.RenderStepped, function(dt)
+            if not f.Parent then conn:Disconnect() return end
+            acc += dt
+            if acc < 0.1 or not isShown(f) then return end
+            acc = 0
+            local healing = tracker.Healing
+            if healing ~= wasHealing then
+                wasHealing = healing
+                title.Text = healing and "Healing" or "Not healing"
+                tw(title, { TextColor3 = healing and HEAL_COLOR or Theme.Text }, 0.3)
+                tw(plusA, { BackgroundColor3 = healing and HEAL_COLOR or Theme.Sub }, 0.3)
+                tw(plusB, { BackgroundColor3 = healing and HEAL_COLOR or Theme.Sub }, 0.3)
+            end
+            if healing then
+                local pulse = 1 + 0.12 * math.sin(os.clock() * 6)
+                badge.Size = UDim2.fromOffset(38 * pulse, 38 * pulse)
+                badge.Position = UDim2.fromOffset(14 - 19 * (pulse - 1), 14 - 19 * (pulse - 1))
+            else
+                badge.Size = UDim2.fromOffset(38, 38)
+                badge.Position = UDim2.fromOffset(14, 14)
+            end
+            sub.Text = string.format("+%.1f HP/s", healing and tracker.HealRate or 0)
+            hpL.Text = string.format("%d / %d", math.floor(tracker.Health + 0.5), math.floor(tracker.MaxHealth + 0.5))
+            tw(fill, { Size = UDim2.fromScale(math.clamp((healing and tracker.HealRate or 0) / maxRate, 0, 1), 1) }, 0.25)
+        end)
+
+        local obj = { Tracker = tracker }
+        function obj:SetTarget(plr) tracker = getTracker(plr) end
+        return obj
+    end
+
+    --// Timers: round time, countdowns, stopwatches (stack at the bottom or top of the screen)
+    local timerHolders = {}
+    local timersById = {}
+    local timerOrder = 0
+    local function getTimerHolder(pos)
+        if timerHolders[pos] then return timerHolders[pos] end
+        local top = (pos == "Top")
+        local h = new("Frame", {
+            Size = UDim2.new(0, 260, 0, 0), AutomaticSize = Enum.AutomaticSize.Y,
+            AnchorPoint = Vector2.new(0.5, top and 0 or 1),
+            Position = top and UDim2.new(0.5, 0, 0, 58) or UDim2.new(0.5, 0, 1, -14),
+            BackgroundTransparency = 1, Parent = gui,
         }, {
-            new("UIListLayout", { Padding = UDim.new(0, 8), SortOrder = Enum.SortOrder.LayoutOrder }),
-            pad(18, 14, 18, 16),
+            new("UIListLayout", {
+                Padding = UDim.new(0, 8), SortOrder = Enum.SortOrder.LayoutOrder,
+                HorizontalAlignment = Enum.HorizontalAlignment.Center,
+                VerticalAlignment = top and Enum.VerticalAlignment.Top or Enum.VerticalAlignment.Bottom,
+            }),
         })
+        timerHolders[pos] = h
+        return h
+    end
 
-        local tab = {
-            Btn = btn, Label = lbl, Icon = icon, Page = pageG, Name = name,
-            X = x, W = w, Index = #tabs + 1, TextW = tw_,
-        }
-        tabs[#tabs + 1] = tab
-        onAccent(function()
-            if tab.Active and tab.Icon then setIconColor(tab.Icon, Theme.Accent) end
+    local function fmtClock(s)
+        s = math.max(0, math.floor(s))
+        local h = math.floor(s / 3600)
+        local m = math.floor((s % 3600) / 60)
+        local sec = s % 60
+        if h > 0 then return string.format("%d:%02d:%02d", h, m, sec) end
+        return string.format("%02d:%02d", m, sec)
+    end
+
+    local function parseClock(text)
+        local h, m, s = text:match("(%d+):(%d+):(%d+)")
+        if h then return tonumber(h) * 3600 + tonumber(m) * 60 + tonumber(s) end
+        m, s = text:match("(%d+):(%d+)")
+        if m then return tonumber(m) * 60 + tonumber(s) end
+        local n = text:match("%d+")
+        return n and tonumber(n) or nil
+    end
+
+    function Window:CreateTimer(o)
+        o = o or {}
+        -- the same timer (same Id or Name) is never created twice: the existing one is reused
+        local tid = o.Id or o.Name
+        local existing = tid and timersById[tid]
+        if existing then
+            existing:Reset(o.Duration)
+            return existing
+        end
+        local mode = o.Mode or "Down"
+        local goal = o.Duration -- countdown start, or optional goal of a stopwatch
+        local duration = o.Duration or 60
+        local warnAt = o.Warning or 10
+        local W, H = 250, 50
+        local pos = o.Position or "Bottom"
+        local top = (pos == "Top")
+        local holderT = getTimerHolder(pos)
+
+        local remaining = (mode == "Down") and duration or 0
+        local elapsed = 0
+        local running = o.AutoStart ~= false
+        local finished, destroyed = false, false
+        local external, onFinishFns = nil, {}
+        local lastSecond
+
+        timerOrder += 1
+        local cont = new("Frame", {
+            Size = UDim2.fromOffset(W, 0), BackgroundTransparency = 1,
+            LayoutOrder = top and timerOrder or -timerOrder, Parent = holderT,
+        })
+        local card = new("CanvasGroup", {
+            Size = UDim2.fromOffset(W, H), Position = UDim2.fromOffset(0, top and -24 or 24),
+            BackgroundColor3 = Theme.Bg, BackgroundTransparency = 0.1, BorderSizePixel = 0,
+            GroupTransparency = 1, Parent = cont,
+        }, { corner(12) })
+        new("Frame", {
+            Size = UDim2.new(1, -2, 1, -2), Position = UDim2.fromOffset(1, 1),
+            BackgroundTransparency = 1, BorderSizePixel = 0, Parent = card,
+        }, { corner(11), stroke(Theme.Stroke, 1, 0.2) })
+        local nameL = label({
+            Text = string.upper(o.Name or "Timer"), Font = Enum.Font.GothamBold, TextSize = 10,
+            TextColor3 = Theme.Sub, Position = UDim2.fromOffset(14, 8), Size = UDim2.new(1, -130, 0, 14), Parent = card,
+        })
+        local timeL = label({
+            Text = "--:--", Font = Enum.Font.GothamBold, TextSize = 22, TextXAlignment = Enum.TextXAlignment.Right,
+            AnchorPoint = Vector2.new(1, 0), Position = UDim2.new(1, -14, 0, 5), Size = UDim2.fromOffset(120, 26), Parent = card,
+        })
+        local track = new("Frame", {
+            Position = UDim2.new(0, 14, 1, -11), Size = UDim2.new(1, -28, 0, 3),
+            BackgroundColor3 = Theme.Hover, BorderSizePixel = 0, Parent = card,
+        }, { circle() })
+        local fill = new("Frame", {
+            Size = UDim2.fromScale(1, 1), BackgroundColor3 = o.Color or Theme.Accent,
+            BorderSizePixel = 0, Parent = track,
+        }, { circle() })
+        track.Visible = (o.ShowBar ~= false) and (mode == "Down" or goal ~= nil)
+        onAccent(function() if not o.Color then fill.BackgroundColor3 = Theme.Accent end end)
+
+        tw(cont, { Size = UDim2.fromOffset(W, H) }, 0.4, ES.Quint)
+        task.delay(0.1, function()
+            tw(card, { Position = UDim2.fromOffset(0, 0), GroupTransparency = 0 }, 0.6, ES.Quint)
         end)
 
-        btn.MouseEnter:Connect(function()
-            if not tab.Active then
-                tw(lbl, { TextColor3 = Theme.Text }, 0.25)
-                if icon then iconColor(icon, Theme.Text, 0.25) end
+        local obj = {}
+        local function getTime() return (mode == "Down") and remaining or elapsed end
+
+        local function finish()
+            if finished then return end
+            finished, running = true, false
+            safe(o.Callback)
+            for _, fn in ipairs(onFinishFns) do safe(fn) end
+            if not o.Keep then
+                task.delay(o.HideDelay or 3, function() obj:Destroy() end)
+            end
+        end
+
+        local conn
+        conn = connect(RunService.Heartbeat, function(dt)
+            if destroyed then return end
+            if external then
+                local v = external()
+                if v then
+                    if mode == "Down" then
+                        remaining = v
+                        if v > duration then duration = v end
+                    else
+                        elapsed = v
+                    end
+                end
+            elseif running and not finished then
+                if mode == "Down" then
+                    remaining -= dt
+                    if remaining <= 0 then remaining = 0 finish() end
+                else
+                    elapsed += dt
+                    if goal and elapsed >= goal and o.FinishAtGoal then elapsed = goal finish() end
+                end
+            end
+            local t = getTime()
+            local sec = (mode == "Down") and math.ceil(t) or math.floor(t)
+            timeL.Text = fmtClock(sec)
+            if sec ~= lastSecond then
+                lastSecond = sec
+                if o.OnTick then safe(o.OnTick, sec) end
+            end
+            if track.Visible then
+                local frac = (mode == "Down") and (duration > 0 and remaining / duration or 0) or (goal and elapsed / goal or 0)
+                fill.Size = UDim2.fromScale(math.clamp(frac, 0, 1), 1)
+            end
+            -- colour states: normal, warning (amber), last 5 seconds (red, blinking)
+            local col, blink = Theme.Text, 0
+            if mode == "Down" and (running or external) and not finished then
+                if remaining <= 5 then
+                    col, blink = Color3.fromRGB(255, 95, 95), 0.35 * (0.5 + 0.5 * math.sin(os.clock() * 10))
+                elseif remaining <= warnAt then
+                    col = Color3.fromRGB(255, 200, 90)
+                end
+            elseif finished and mode == "Down" then
+                col = Color3.fromRGB(255, 95, 95)
+            end
+            timeL.TextColor3 = col
+            timeL.TextTransparency = blink
+            if not o.Color then
+                fill.BackgroundColor3 = (col == Theme.Text) and Theme.Accent or col
             end
         end)
-        btn.MouseLeave:Connect(function()
-            if not tab.Active then
-                tw(lbl, { TextColor3 = Theme.Sub }, 0.25)
-                if icon then iconColor(icon, Theme.Sub, 0.25) end
-            end
-        end)
-        btn.MouseButton1Click:Connect(function() selectTab(tab) end)
 
+        function obj:Start() running, finished = true, false end
+        function obj:Pause() running = false end
+        function obj:Resume() if not finished then running = true end end
+        function obj:Stop() running = false end
+        function obj:Reset(seconds)
+            finished, running = false, o.AutoStart ~= false
+            if seconds then duration = seconds goal = seconds end
+            remaining = (mode == "Down") and duration or 0
+            elapsed = 0
+        end
+        function obj:Set(seconds)
+            if mode == "Down" then
+                remaining = seconds
+                if seconds > duration then duration = seconds end
+            else
+                elapsed = seconds
+            end
+            finished = false
+        end
+        function obj:Add(seconds) obj:Set(getTime() + seconds) end
+        function obj:GetTime() return getTime() end
+        function obj:IsRunning() return running and not finished end
+        function obj:SetName(text) nameL.Text = string.upper(text) end
+        function obj:OnFinish(fn) table.insert(onFinishFns, fn) end
+        -- follow a value of the game: a NumberValue / IntValue (or an Attribute of any instance)
+        function obj:BindValue(inst, attribute)
+            external = function()
+                if attribute then return tonumber(inst:GetAttribute(attribute)) end
+                return tonumber(inst.Value)
+            end
+        end
+        -- follow a TextLabel of the game that shows "mm:ss" (round timer of the game)
+        function obj:BindText(textObject)
+            local cache, last = nil, 0
+            external = function()
+                local now = os.clock()
+                if now - last > 0.2 then
+                    last = now
+                    cache = parseClock(textObject.Text or "")
+                end
+                return cache
+            end
+        end
+        function obj:Unbind() external = nil end
+        function obj:Destroy()
+            if destroyed then return end
+            destroyed = true
+            if tid and timersById[tid] == obj then timersById[tid] = nil end
+            if conn then conn:Disconnect() end
+            tw(card, { GroupTransparency = 1, Position = UDim2.fromOffset(0, top and -24 or 24) }, 0.4, ES.Quint)
+            task.delay(0.35, function()
+                tw(cont, { Size = UDim2.fromOffset(W, 0) }, 0.3, ES.Quint)
+                task.wait(0.35)
+                cont:Destroy()
+            end)
+        end
+        if tid then timersById[tid] = obj end
+        return obj
+    end
+
+    -- builds every element (button, toggle, slider ...) into a scrolling page; used by tabs and panels
+    local function makeElements(page)
         local order = 0
         local function nextOrder() order += 1 return order end
 
@@ -1448,6 +2372,7 @@ function Lumen:CreateWindow(opts)
                             listening = false
                             tw(kb, { BackgroundTransparency = 0.2 }, 0.25)
                             saveConfig()
+                            safe(o2.OnChange, current)
                         end
                     end
                     return
@@ -1675,6 +2600,62 @@ function Lumen:CreateWindow(opts)
             }
         end
 
+        -- progress bar: stamina, mana, cooldown, anything with a value and a maximum
+        function Tab:CreateBar(o2)
+            local f = box(o2.Height or 46)
+            local io = cardIcon(f, o2.Icon, 16)
+            label({
+                Text = o2.Name or "Bar", Position = UDim2.fromOffset(14 + io, 6),
+                Size = UDim2.new(1, -110, 0, 18), Parent = f,
+            })
+            local valL = label({
+                Text = "", TextColor3 = Theme.Sub, TextSize = 12, TextXAlignment = Enum.TextXAlignment.Right,
+                AnchorPoint = Vector2.new(1, 0), Position = UDim2.new(1, -14, 0, 6), Size = UDim2.fromOffset(100, 18), Parent = f,
+            })
+            local track = new("Frame", {
+                Position = UDim2.fromOffset(14, 30), Size = UDim2.new(1, -28, 0, 6),
+                BackgroundColor3 = Theme.Hover, BorderSizePixel = 0, Parent = f,
+            }, { circle() })
+            local fill = new("Frame", {
+                Size = UDim2.fromScale(0, 1), BackgroundColor3 = o2.Color or Theme.Accent, BorderSizePixel = 0, Parent = track,
+            }, { circle() })
+            local custom = o2.Color
+            onAccent(function() if not custom then fill.BackgroundColor3 = Theme.Accent end end)
+            local max = o2.Max or 100
+            local value = o2.Value or 0
+            local obj = { Type = "Bar" }
+            local function render(instant)
+                local frac = (max > 0) and math.clamp(value / max, 0, 1) or 0
+                if instant then fill.Size = UDim2.fromScale(frac, 1) else tw(fill, { Size = UDim2.fromScale(frac, 1) }, 0.3) end
+                valL.Text = o2.Format and o2.Format(value, max) or string.format("%d / %d", math.floor(value + 0.5), math.floor(max + 0.5))
+            end
+            function obj:Set(v, m)
+                value = v
+                if m then max = m end
+                render(false)
+            end
+            function obj:Get() return value, max end
+            function obj:SetColor(c) custom = c fill.BackgroundColor3 = c end
+            render(true)
+            return obj
+        end
+
+        -- the player's model (or a simple figure): the body part that took damage lights up
+        function Tab:CreateBodyDamage(o2)
+            local f = box(300)
+            return buildBody(f, o2 or {})
+        end
+
+        -- heal meter: is the player healing right now, and how fast (HP/s)
+        function Tab:CreateHealMeter(o2)
+            local f = box(66)
+            return buildHeal(f, o2 or {})
+        end
+
+        Tab.AddBar = Tab.CreateBar
+        Tab.AddBodyDamage = Tab.CreateBodyDamage
+        Tab.AddHealMeter = Tab.CreateHealMeter
+
         -- Add* aliases (the library's original names)
         Tab.AddProfile = Tab.CreateProfile
         Tab.AddSection = Tab.CreateSection
@@ -1687,142 +2668,823 @@ function Lumen:CreateWindow(opts)
         Tab.AddInput = Tab.CreateInput
         Tab.AddKeybind = Tab.CreateKeybind
         Tab.AddColorPicker = Tab.CreateColorPicker
+        return Tab
+    end
+
+    --// ===== Panels: windows docked to a screen edge (open on hover), draggable ===========
+    -- Hold the header and drag a panel: drop it near an edge to dock it there (it then opens when
+    -- the mouse touches that edge), or drop it anywhere else to leave it floating. The rotate button
+    -- moves it to the next edge (Left > Top > Right > Bottom). Panels with the same Id are never
+    -- created twice. Positions are remembered between launches.
+    local panels, panelsById = {}, {}
+    local SIDE_ORDER = { "Left", "Top", "Right", "Bottom" }
+
+    function Window:CreatePanel(o)
+        o = o or {}
+        local id = tostring(o.Id or o.Title or ("panel" .. (#panels + 1)))
+        local existing = panelsById[id]
+        if existing and existing.Frame and existing.Frame.Parent then
+            existing:Open()
+            return existing
+        end
+
+        local saved = layoutStore[id] or {}
+        local side = saved.side or o.Side or "Right"
+        local W = o.Width or ((side == "Left" or side == "Right") and 270 or 460)
+        local Hh = o.Height or ((side == "Left" or side == "Right") and 360 or 220)
+        local margin = 12
+        local floating = saved.floating == true
+        local fx, fy = saved.x or 80, saved.y or 120
+        local pinned = o.Pinned == true
+        local autoHide = o.AutoHide ~= false
+        local zone = o.HoverZone or 14
+        local hideDelay = o.HideDelay or 0.45
+        local open = false
+        local dead = false
+        local P
+
+        local function topPad() return pill and 56 or 12 end
+        local function viewport()
+            local cam = workspace.CurrentCamera
+            return cam and cam.ViewportSize or Vector2.new(1920, 1080)
+        end
+        local function dockAbs(s)
+            local vp = viewport()
+            if s == "Left" then return Vector2.new(margin, (vp.Y - Hh) / 2)
+            elseif s == "Right" then return Vector2.new(vp.X - W - margin, (vp.Y - Hh) / 2)
+            elseif s == "Top" then return Vector2.new((vp.X - W) / 2, topPad())
+            else return Vector2.new((vp.X - W) / 2, vp.Y - Hh - margin) end
+        end
+        local function geometry()
+            if side == "Right" then
+                return Vector2.new(1, 0.5), UDim2.new(1, -margin, 0.5, 0), UDim2.new(1, W + 24, 0.5, 0)
+            elseif side == "Left" then
+                return Vector2.new(0, 0.5), UDim2.new(0, margin, 0.5, 0), UDim2.new(0, -(W + 24), 0.5, 0)
+            elseif side == "Top" then
+                return Vector2.new(0.5, 0), UDim2.new(0.5, 0, 0, topPad()), UDim2.new(0.5, 0, 0, -(Hh + 24))
+            end
+            return Vector2.new(0.5, 1), UDim2.new(0.5, 0, 1, -margin), UDim2.new(0.5, 0, 1, Hh + 24)
+        end
+
+        local pf = new("CanvasGroup", {
+            Name = "Panel_" .. id, Size = UDim2.fromOffset(W, Hh), BackgroundColor3 = Theme.Bg,
+            BackgroundTransparency = o.Transparency or 0.1, BorderSizePixel = 0,
+            GroupTransparency = 1, Visible = false, Parent = gui,
+        }, { corner(14) })
+        new("Frame", {
+            Size = UDim2.new(1, -2, 1, -2), Position = UDim2.fromOffset(1, 1),
+            BackgroundTransparency = 1, BorderSizePixel = 0, ZIndex = 50, Parent = pf,
+        }, { corner(13), stroke(Theme.Stroke, 1, 0.1) })
+
+        local header = new("Frame", {
+            Size = UDim2.new(1, 0, 0, 36), BackgroundTransparency = 1, Parent = pf,
+        })
+        label({
+            Text = o.Title or id, Font = Enum.Font.GothamBold, TextSize = 13,
+            TextTruncate = Enum.TextTruncate.AtEnd,
+            Position = UDim2.fromOffset(14, 0), Size = UDim2.new(1, -110, 1, 0), Parent = header,
+        })
+        new("Frame", {
+            Size = UDim2.new(1, -24, 0, 1), Position = UDim2.fromOffset(12, 36),
+            BackgroundColor3 = Theme.Stroke, BackgroundTransparency = 0.4, BorderSizePixel = 0, Parent = pf,
+        })
+
+        local function miniButton(xOffset, iconName)
+            local b = new("TextButton", {
+                Size = UDim2.fromOffset(24, 24), AnchorPoint = Vector2.new(1, 0.5),
+                Position = UDim2.new(1, xOffset, 0, 18), BackgroundColor3 = Theme.Hover,
+                BackgroundTransparency = 1, Text = "", AutoButtonColor = false, Parent = header,
+            }, { circle() })
+            local ic = makeIcon(b, iconName, 11, Theme.Sub)
+            b.MouseEnter:Connect(function() tw(b, { BackgroundTransparency = 0.2 }, 0.25) iconColor(ic, Theme.Text) end)
+            b.MouseLeave:Connect(function() tw(b, { BackgroundTransparency = 1 }, 0.25) iconColor(ic, Theme.Sub) end)
+            return b, ic
+        end
+        local rotateBtn = miniButton(-70, "refresh")
+        local pinBtn, pinIcon = miniButton(-42, "pin")
+        local closeBtn2 = miniButton(-14, "close")
+
+        local page = new("ScrollingFrame", {
+            Position = UDim2.fromOffset(0, 38), Size = UDim2.new(1, 0, 1, -38),
+            BackgroundTransparency = 1, BorderSizePixel = 0, ScrollBarThickness = 2,
+            ScrollBarImageColor3 = Theme.Stroke, CanvasSize = UDim2.new(),
+            AutomaticCanvasSize = Enum.AutomaticSize.Y, Parent = pf,
+        }, {
+            new("UIListLayout", { Padding = UDim.new(0, 8), SortOrder = Enum.SortOrder.LayoutOrder }),
+            pad(12, 10, 12, 12),
+        })
+        P = makeElements(page)
+        P.Frame = pf
+        P.Id = id
+
+        -- thin handle on the screen edge while the panel is closed
+        local handle = new("Frame", {
+            BackgroundColor3 = Theme.Accent, BackgroundTransparency = 1, BorderSizePixel = 0,
+            Visible = false, Parent = gui,
+        }, { circle() })
+        local handleBtn = new("TextButton", {
+            Size = UDim2.fromScale(1, 1), BackgroundTransparency = 1, Text = "", ZIndex = 5, Parent = handle,
+        })
+        onAccent(function() handle.BackgroundColor3 = Theme.Accent end)
+
+        local function placeHandle()
+            if floating or open then
+                tw(handle, { BackgroundTransparency = 1 }, 0.3)
+                task.delay(0.3, function() if floating or open then handle.Visible = false end end)
+                return
+            end
+            handle.Visible = true
+            if side == "Left" then
+                handle.AnchorPoint, handle.Position, handle.Size = Vector2.new(0, 0.5), UDim2.new(0, 3, 0.5, 0), UDim2.fromOffset(4, 56)
+            elseif side == "Right" then
+                handle.AnchorPoint, handle.Position, handle.Size = Vector2.new(1, 0.5), UDim2.new(1, -3, 0.5, 0), UDim2.fromOffset(4, 56)
+            elseif side == "Top" then
+                handle.AnchorPoint, handle.Position, handle.Size = Vector2.new(0.5, 0), UDim2.new(0.5, 0, 0, 3), UDim2.fromOffset(56, 4)
+            else
+                handle.AnchorPoint, handle.Position, handle.Size = Vector2.new(0.5, 1), UDim2.new(0.5, 0, 1, -3), UDim2.fromOffset(56, 4)
+            end
+            tw(handle, { BackgroundTransparency = 0.45 }, 0.4)
+        end
+
+        local function saveLayout()
+            local abs = pf.AbsolutePosition
+            layoutStore[id] = { side = side, floating = floating, x = floating and abs.X or fx, y = floating and abs.Y or fy }
+            persist()
+        end
+
+        local function applyDockProps()
+            local anchor, shown, hidden = geometry()
+            pf.AnchorPoint = anchor
+            pf.Position = open and shown or hidden
+        end
+
+        local function setOpen(b)
+            if dead then return end
+            open = b
+            pf.Visible = true
+            if floating then
+                tw(pf, { GroupTransparency = b and 0 or 1 }, 0.4)
+            else
+                local anchor, shown, hidden = geometry()
+                pf.AnchorPoint = anchor
+                tw(pf, { Position = b and shown or hidden, GroupTransparency = b and 0 or 1 }, 0.55, ES.Quint)
+            end
+            placeHandle()
+            if not b then
+                task.delay(0.65, function()
+                    if not open and not dead then pf.Visible = false end
+                end)
+            end
+        end
+
+        -- slide to a dock position (used by drop, rotate, reset)
+        local moveToken = 0
+        local function dockTo(newSide, openAfter)
+            moveToken += 1
+            local mine = moveToken
+            floating = false
+            side = newSide
+            pf.Visible = true
+            local cur = pf.AbsolutePosition
+            pf.AnchorPoint = Vector2.new(0, 0)
+            pf.Position = UDim2.fromOffset(cur.X, cur.Y)
+            local target = dockAbs(newSide)
+            tw(pf, { Position = UDim2.fromOffset(target.X, target.Y), GroupTransparency = 0 }, 0.55, ES.Quint)
+            open = true
+            placeHandle()
+            task.delay(0.6, function()
+                if mine ~= moveToken or dead then return end
+                applyDockProps()
+                if openAfter == false then open = false end
+            end)
+            saveLayout()
+        end
+
+        -- dragging by the header
+        local hint = new("Frame", {
+            BackgroundColor3 = Theme.Accent, BackgroundTransparency = 1, BorderSizePixel = 0, Parent = gui,
+        }, { circle() })
+        local function showHint(s)
+            if not s then tw(hint, { BackgroundTransparency = 1 }, 0.2) return end
+            if s == "Left" then hint.AnchorPoint, hint.Position, hint.Size = Vector2.new(0, 0.5), UDim2.new(0, 2, 0.5, 0), UDim2.fromOffset(5, 180)
+            elseif s == "Right" then hint.AnchorPoint, hint.Position, hint.Size = Vector2.new(1, 0.5), UDim2.new(1, -2, 0.5, 0), UDim2.fromOffset(5, 180)
+            elseif s == "Top" then hint.AnchorPoint, hint.Position, hint.Size = Vector2.new(0.5, 0), UDim2.new(0.5, 0, 0, 2), UDim2.fromOffset(180, 5)
+            else hint.AnchorPoint, hint.Position, hint.Size = Vector2.new(0.5, 1), UDim2.new(0.5, 0, 1, -2), UDim2.fromOffset(180, 5) end
+            tw(hint, { BackgroundTransparency = 0.25 }, 0.2)
+        end
+        local function nearestEdge(x, y)
+            local vp = viewport()
+            local d = { Left = x, Right = vp.X - (x + W), Top = y, Bottom = vp.Y - (y + Hh) }
+            local best, bd
+            for s, v in pairs(d) do
+                if not bd or v < bd then best, bd = s, v end
+            end
+            if bd < 90 then return best end
+            return nil
+        end
+
+        local drag
+        header.InputBegan:Connect(function(i)
+            if i.UserInputType == Enum.UserInputType.MouseButton1 or i.UserInputType == Enum.UserInputType.Touch then
+                moveToken += 1
+                local abs = pf.AbsolutePosition
+                pf.AnchorPoint = Vector2.new(0, 0)
+                pf.Position = UDim2.fromOffset(abs.X, abs.Y)
+                drag = { start = i.Position, abs = abs }
+                i.Changed:Connect(function()
+                    if i.UserInputState == Enum.UserInputState.End and drag then
+                        local cur = pf.AbsolutePosition
+                        drag = nil
+                        showHint(nil)
+                        local edge = nearestEdge(cur.X, cur.Y)
+                        if edge then
+                            dockTo(edge, true)
+                        else
+                            floating = true
+                            open = true
+                            placeHandle()
+                            saveLayout()
+                        end
+                    end
+                end)
+            end
+        end)
+        connect(UIS.InputChanged, function(i)
+            if drag and (i.UserInputType == Enum.UserInputType.MouseMovement or i.UserInputType == Enum.UserInputType.Touch) then
+                local vp = viewport()
+                local d = i.Position - drag.start
+                local x = math.clamp(drag.abs.X + d.X, 0, math.max(vp.X - W, 0))
+                local y = math.clamp(drag.abs.Y + d.Y, 0, math.max(vp.Y - Hh, 0))
+                tw(pf, { Position = UDim2.fromOffset(x, y) }, 0.12)
+                showHint(nearestEdge(x, y))
+            end
+        end)
+
+        rotateBtn.MouseButton1Click:Connect(function()
+            local idx = table.find(SIDE_ORDER, side) or 1
+            dockTo(SIDE_ORDER[idx % #SIDE_ORDER + 1], true)
+        end)
+        pinBtn.MouseButton1Click:Connect(function()
+            if floating then
+                dockTo(nearestEdge(pf.AbsolutePosition.X, pf.AbsolutePosition.Y) or side, true)
+            else
+                pinned = not pinned
+                setIconColor(pinIcon, pinned and Theme.Accent or Theme.Sub)
+            end
+        end)
+        closeBtn2.MouseButton1Click:Connect(function()
+            if floating then
+                floating = false
+                applyDockProps()
+                saveLayout()
+            end
+            pinned = false
+            setOpen(false)
+        end)
+        if pinned then setIconColor(pinIcon, Theme.Accent) end
+
+        -- hover to open / leave to close (the mouse position is polled, so child objects never get in the way)
+        local lastInside = 0
+        local function inRect(pt, pos, sz, m)
+            return pt.X >= pos.X - m and pt.X <= pos.X + sz.X + m and pt.Y >= pos.Y - m and pt.Y <= pos.Y + sz.Y + m
+        end
+        local function inZone(m, vp)
+            if side == "Left" then return inRect(m, Vector2.new(0, vp.Y / 2 - Hh / 2 - 30), Vector2.new(zone, Hh + 60), 0)
+            elseif side == "Right" then return inRect(m, Vector2.new(vp.X - zone, vp.Y / 2 - Hh / 2 - 30), Vector2.new(zone, Hh + 60), 0)
+            elseif side == "Top" then return inRect(m, Vector2.new(vp.X / 2 - W / 2 - 30, 0), Vector2.new(W + 60, zone), 0) end
+            return inRect(m, Vector2.new(vp.X / 2 - W / 2 - 30, vp.Y - zone), Vector2.new(W + 60, zone), 0)
+        end
+        connect(RunService.RenderStepped, function()
+            if dead or floating or drag then return end
+            local m = UIS:GetMouseLocation()
+            local vp = viewport()
+            local inside
+            if open then
+                inside = inRect(m, pf.AbsolutePosition, pf.AbsoluteSize, 18)
+            else
+                inside = inZone(m, vp)
+            end
+            if inside then
+                lastInside = os.clock()
+                if not open then setOpen(true) end
+            elseif open and not pinned and autoHide and os.clock() - lastInside > hideDelay then
+                setOpen(false)
+            end
+        end)
+        handleBtn.MouseButton1Click:Connect(function() setOpen(not open) end)
+
+        function P:Open()
+            if floating then pf.Visible = true open = true tw(pf, { GroupTransparency = 0 }, 0.4) else setOpen(true) end
+        end
+        function P:Close() setOpen(false) end
+        function P:Toggle() setOpen(not open) end
+        function P:IsOpen() return open end
+        function P:SetPinned(b)
+            pinned = b and true or false
+            setIconColor(pinIcon, pinned and Theme.Accent or Theme.Sub)
+        end
+        function P:Dock(s)
+            if table.find(SIDE_ORDER, s) then dockTo(s, true) end
+        end
+        function P:Float(x, y)
+            floating = true
+            fx, fy = x or fx, y or fy
+            pf.Visible = true
+            pf.AnchorPoint = Vector2.new(0, 0)
+            tw(pf, { Position = UDim2.fromOffset(fx, fy), GroupTransparency = 0 }, 0.5, ES.Quint)
+            open = true
+            placeHandle()
+            saveLayout()
+        end
+        function P:ResetLayout()
+            layoutStore[id] = nil
+            dockTo(o.Side or "Right", false)
+            open = false
+            setOpen(false)
+        end
+        function P:Destroy()
+            if dead then return end
+            dead = true
+            panelsById[id] = nil
+            local i = table.find(panels, P)
+            if i then table.remove(panels, i) end
+            tw(pf, { GroupTransparency = 1 }, 0.3)
+            task.delay(0.35, function()
+                pf:Destroy()
+                handle:Destroy()
+                hint:Destroy()
+            end)
+        end
+
+        panels[#panels + 1] = P
+        panelsById[id] = P
+        -- first state: floating panels appear where they were left, docked ones wait at their edge
+        if floating then
+            pf.Visible = true
+            pf.AnchorPoint = Vector2.new(0, 0)
+            pf.Position = UDim2.fromOffset(fx, fy)
+            open = true
+            tw(pf, { GroupTransparency = 0 }, 0.5)
+        else
+            applyDockProps()
+            placeHandle()
+            if o.Open == true then setOpen(true) end
+        end
+        return P
+    end
+
+    function Window:GetPanel(id) return panelsById[tostring(id)] end
+
+    -- panel with the body model + heal meter (the usual "damage taken" side window)
+    function Window:CreateBodyPanel(o)
+        o = o or {}
+        local panel = Window:CreatePanel({
+            Id = o.Id or "body", Title = o.Title or "Body", Side = o.Side or "Left",
+            Width = o.Width or 260, Height = o.Height or 520, Pinned = o.Pinned, Open = o.Open,
+        })
+        if not panel._body then
+            panel._body = panel:CreateBodyDamage(o)
+            if o.HealMeter ~= false then panel._heal = panel:CreateHealMeter(o) end
+        end
+        return panel, panel._body, panel._heal
+    end
+
+    function Window:ResetLayout()
+        layoutStore.__main = nil
+        tw(main, { Position = UDim2.fromScale(0.5, 0.5) }, 0.6, ES.Quint)
+        for _, p in ipairs(panels) do pcall(p.ResetLayout, p) end
+        persist()
+    end
+
+    function Lumen:CreatePanel(o)
+        if Lumen._window then return Lumen._window:CreatePanel(o) end
+    end
+    function Lumen:CreateTimer(o)
+        if Lumen._window then return Lumen._window:CreateTimer(o) end
+    end
+    function Lumen:CreateBodyPanel(o)
+        if Lumen._window then return Lumen._window:CreateBodyPanel(o) end
+    end
+
+    function Window:CreateTab(name, icon)
+        if type(name) == "table" then return Window:AddTab(name) end
+        return Window:AddTab({ Name = name, Icon = icon })
+    end
+
+    function Window:AddTab(o)
+        if type(o) == "string" then o = { Name = o } end
+        o = o or {}
+        local name = o.Name or "Tab"
+        local iconName = o.Icon or o.Image
+        if tabsByName[name] then return tabsByName[name].API end -- the same tab is never created twice
+        if not expandTabs then
+            local needW = math.floor(textWidth(name, 13) + (iconName and 20 or 0) + 30)
+            if barW + needW + 4 > rightBound - leftBound then convertToExpand() end
+        end
+        if expandTabs and not iconName then iconName = name end
+
+        local tw_ = textWidth(name, 13)
+        local iconW = iconName and 20 or 0
+        local w = math.floor(tw_ + iconW + 30)
+        if expandTabs then w = 36 end
+        local x = barW
+        barW = barW + w + 4
+        tabBar.Size = UDim2.fromOffset(barW, 36)
+        tabBar.Position = UDim2.fromOffset(barX(barW), 24)
+
+        local btn = new("TextButton", {
+            Size = UDim2.fromOffset(w, 28), Position = UDim2.fromOffset(x, 4),
+            BackgroundTransparency = 1, Text = "", AutoButtonColor = false, Parent = tabBar,
+        })
+        local icon
+        if iconName then
+            local holderI = new("Frame", {
+                Size = UDim2.fromOffset(16, 16), Position = UDim2.fromOffset(11, 6),
+                BackgroundTransparency = 1, Parent = btn,
+            })
+            icon = makeIcon(holderI, iconName, 13, Theme.Sub)
+        end
+        local lbl = label({
+            Text = name, TextColor3 = Theme.Sub,
+            Position = UDim2.fromOffset(13 + iconW, 0), Size = UDim2.fromOffset(tw_ + 6, 28), Parent = btn,
+        })
+        if expandTabs then lbl.TextTransparency = 1 end
+
+        local pageG = new("CanvasGroup", {
+            Size = UDim2.fromScale(1, 1), BackgroundTransparency = 1, BorderSizePixel = 0,
+            GroupTransparency = 1, Visible = false, Parent = content,
+        })
+        local page = new("ScrollingFrame", {
+            Size = UDim2.fromScale(1, 1), BackgroundTransparency = 1, BorderSizePixel = 0,
+            ScrollBarThickness = 2, ScrollBarImageColor3 = Theme.Stroke,
+            CanvasSize = UDim2.new(), AutomaticCanvasSize = Enum.AutomaticSize.Y,
+            Parent = pageG,
+        }, {
+            new("UIListLayout", { Padding = UDim.new(0, 8), SortOrder = Enum.SortOrder.LayoutOrder }),
+            pad(18, 14, 18, 16),
+        })
+
+        local tab = {
+            Btn = btn, Label = lbl, Icon = icon, Page = pageG, Name = name,
+            X = x, W = w, Index = #tabs + 1, TextW = tw_,
+        }
+        tabs[#tabs + 1] = tab
+        onAccent(function()
+            if tab.Active and tab.Icon then setIconColor(tab.Icon, Theme.Accent) end
+        end)
+
+        btn.MouseEnter:Connect(function()
+            if not tab.Active then
+                tw(lbl, { TextColor3 = Theme.Text }, 0.25)
+                if icon then iconColor(icon, Theme.Text, 0.25) end
+            end
+        end)
+        btn.MouseLeave:Connect(function()
+            if not tab.Active then
+                tw(lbl, { TextColor3 = Theme.Sub }, 0.25)
+                if icon then iconColor(icon, Theme.Sub, 0.25) end
+            end
+        end)
+        btn.MouseButton1Click:Connect(function() selectTab(tab) end)
+
+        local Tab = makeElements(page)
+        tab.API = Tab
+        tabsByName[name] = tab
 
         if #tabs == 1 then selectTab(tab, true) end
         if expandTabs then layoutTabs(true) end
         return Tab
     end
 
-    --// Info bar (top center): avatar, nick, script, injector, FPS, ping, server ----
-    -- Click it to hide / show the window.
+    --// Info bar: avatar, nick, script, injector, FPS, ping, players ----------------------
+    -- Docked to Top / Bottom / Left / Right or floating as its own window. Hold it and drag to
+    -- move it (drop it near an edge to dock it), click it to hide / show the main window.
     local showPill = function() end
-    if opts.InfoBar ~= false and opts.FPS ~= false then
-        local lp = Players.LocalPlayer
-        local Stats = game:GetService("Stats")
-        local executorName = "Unknown"
-        pcall(function()
-            if identifyexecutor then executorName = tostring((identifyexecutor())) end
-        end)
-        local scriptName = opts.ScriptName or opts.Subtitle or titleText
-        local nick = lp.Name
-        local H = 40
+    local barApi
+    do
+        local ibCfg = (remember and S.infoBar) or {}
+        local barSide = ibCfg.side or "Top"
+        local barVisible = ibCfg.visible ~= false
+        local floatX, floatY = ibCfg.x, ibCfg.y
 
-        pill = new("CanvasGroup", {
-            Size = UDim2.fromOffset(100, H), AnchorPoint = Vector2.new(0.5, 0),
-            Position = UDim2.new(0.5, 0, 0, 4), BackgroundColor3 = Theme.Bg,
-            BackgroundTransparency = 0.1, BorderSizePixel = 0, GroupTransparency = 1,
-            Visible = false, Parent = gui,
-        }, { circle(), new("UIScale", { Scale = 0.92 }) })
-        local pillScale = pill:FindFirstChildOfClass("UIScale")
-        new("Frame", { -- inset border
-            Size = UDim2.new(1, -2, 1, -2), Position = UDim2.fromOffset(1, 1),
-            BackgroundTransparency = 1, BorderSizePixel = 0, Parent = pill,
-        }, { circle(), stroke(Theme.Stroke, 1, 0.2) })
-
-        local x = 10
-        local function separator()
-            new("Frame", {
-                Size = UDim2.fromOffset(1, 18), Position = UDim2.fromOffset(x + 7, (H - 18) / 2),
-                BackgroundColor3 = Theme.Stroke, BorderSizePixel = 0, Parent = pill,
-            })
-            x += 15
-        end
-        local function block(caption, value, width)
-            width = math.max(width or 0, textWidth(value, 12, Enum.Font.GothamBold), textWidth(caption, 9, Enum.Font.GothamBold)) + 2
-            label({
-                Text = caption, Font = Enum.Font.GothamBold, TextSize = 9, TextColor3 = Theme.Sub,
-                Position = UDim2.fromOffset(x, 5), Size = UDim2.fromOffset(width, 12), Parent = pill,
-            })
-            local v = label({
-                Text = value, Font = Enum.Font.GothamBold, TextSize = 12,
-                Position = UDim2.fromOffset(x, 18), Size = UDim2.fromOffset(width, 16), Parent = pill,
-            })
-            x += width
-            return v
-        end
-
-        -- avatar (headshot loads in the background and fades in)
-        local avatar = new("ImageLabel", {
-            Size = UDim2.fromOffset(26, 26), Position = UDim2.fromOffset(x, (H - 26) / 2),
-            BackgroundColor3 = Theme.Hover, BorderSizePixel = 0, ImageTransparency = 1, Parent = pill,
-        }, { circle() })
-        x += 26 + 9
-        task.spawn(function()
-            local ok, img = pcall(function()
-                return Players:GetUserThumbnailAsync(lp.UserId, Enum.ThumbnailType.HeadShot, Enum.ThumbnailSize.Size48x48)
+        if opts.InfoBar ~= false and opts.FPS ~= false then
+            local lp = Players.LocalPlayer
+            local Stats = game:GetService("Stats")
+            local executorName = "Unknown"
+            pcall(function()
+                if identifyexecutor then executorName = tostring((identifyexecutor())) end
             end)
-            if ok and img and avatar.Parent then
-                avatar.Image = img
-                tw(avatar, { ImageTransparency = 0 }, 0.8, ES.Sine)
-            end
-        end)
+            local scriptName = opts.ScriptName or opts.Subtitle or titleText
+            local nick = lp.Name
+            local GB = Enum.Font.GothamBold
 
-        block("PLAYER", nick, 0)
-        separator()
-        block("SCRIPT", scriptName, 0)
-        separator()
-        block("INJECTOR", executorName, 0)
-        separator()
-        local fpsV = block("FPS", "--", 30)
-        separator()
-        local pingV = block("PING", "-- ms", 48)
-        separator()
-        local srvV = block("SERVER", "--/--", 34)
-        pill.Size = UDim2.fromOffset(x + 12, H)
+            pill = new("CanvasGroup", {
+                Size = UDim2.fromOffset(100, 40), AnchorPoint = Vector2.new(0.5, 0),
+                Position = UDim2.new(0.5, 0, 0, 4), BackgroundColor3 = Theme.Bg,
+                BackgroundTransparency = 0.1, BorderSizePixel = 0, GroupTransparency = 1,
+                Visible = false, Parent = gui,
+            }, { corner(18), new("UIScale", { Scale = 0.92 }) })
+            local pillScale = pill:FindFirstChildOfClass("UIScale")
+            new("Frame", {
+                Size = UDim2.new(1, -2, 1, -2), Position = UDim2.fromOffset(1, 1),
+                BackgroundTransparency = 1, BorderSizePixel = 0, Parent = pill,
+            }, { corner(17), stroke(Theme.Stroke, 1, 0.2) })
 
-        local hitP = new("TextButton", {
-            Size = UDim2.fromScale(1, 1), BackgroundTransparency = 1, Text = "",
-            AutoButtonColor = false, ZIndex = 20, Parent = pill,
-        })
-        hitP.MouseEnter:Connect(function() tw(pill, { BackgroundTransparency = 0.3 }, 0.4) end)
-        hitP.MouseLeave:Connect(function() tw(pill, { BackgroundTransparency = 0.1 }, 0.4) end)
-        hitP.MouseButton1Click:Connect(function() setVisible(not visible) end)
+            local avatar = new("ImageLabel", {
+                Size = UDim2.fromOffset(26, 26), BackgroundColor3 = Theme.Hover, BorderSizePixel = 0,
+                ImageTransparency = 1, Parent = pill,
+            }, { circle() })
+            task.spawn(function()
+                local ok, img = pcall(function()
+                    return Players:GetUserThumbnailAsync(lp.UserId, Enum.ThumbnailType.HeadShot, Enum.ThumbnailSize.Size48x48)
+                end)
+                if ok and img and avatar.Parent then
+                    avatar.Image = img
+                    tw(avatar, { ImageTransparency = 0 }, 0.8, ES.Sine)
+                end
+            end)
 
-        -- live values: numbers glide towards the real value instead of jumping
-        local function readPing()
-            local ok, v = pcall(function() return Stats.Network.ServerStatsItem["Data Ping"]:GetValue() end)
-            if not (ok and type(v) == "number") then
-                ok, v = pcall(function() return lp:GetNetworkPing() * 1000 end)
+            local blocks, seps = {}, {}
+            local function addBlock(caption, value, width)
+                width = math.max(width or 0, textWidth(value, 12, GB), textWidth(caption, 9, GB)) + 2
+                local cap = label({ Text = caption, Font = GB, TextSize = 9, TextColor3 = Theme.Sub, Parent = pill })
+                local val = label({ Text = value, Font = GB, TextSize = 12, Parent = pill })
+                blocks[#blocks + 1] = { cap = cap, val = val, w = width }
+                return val
             end
-            if ok and type(v) == "number" then return v end
-            return nil
-        end
-        local function readServer()
-            srvV.Text = #Players:GetPlayers() .. "/" .. Players.MaxPlayers
-        end
-        local fpsTarget, fpsShown = 60, 0
-        local pingTarget, pingShown = readPing() or 0, 0
-        readServer()
-        local frames, acc, slow = 0, 0, 0
-        connect(RunService.RenderStepped, function(dt)
-            frames += 1
-            acc += dt
-            slow += dt
-            if acc >= 0.4 then
-                fpsTarget = frames / acc
-                frames, acc = 0, 0
+            addBlock("PLAYER", nick, 0)
+            addBlock("SCRIPT", scriptName, 0)
+            addBlock("INJECTOR", executorName, 0)
+            local fpsV = addBlock("FPS", "--", 30)
+            local pingV = addBlock("PING", "-- ms", 48)
+            local srvV = addBlock("SERVER", "--/--", 34)
+            for i = 1, #blocks - 1 do
+                seps[i] = new("Frame", { BackgroundColor3 = Theme.Stroke, BorderSizePixel = 0, Parent = pill })
             end
-            if slow >= 1 then
-                slow = 0
-                pingTarget = readPing() or pingTarget
-                readServer()
-            end
-            if pill.Visible then
-                local k = math.min(dt * 7, 1)
-                fpsShown += (fpsTarget - fpsShown) * k
-                pingShown += (pingTarget - pingShown) * k
-                fpsV.Text = tostring(math.floor(fpsShown + 0.5))
-                pingV.Text = math.floor(pingShown + 0.5) .. " ms"
-            end
-        end)
 
-        showPill = function()
-            pill.Visible = true
-            pill.Position = UDim2.new(0.5, 0, 0, -4)
-            tw(pill, { GroupTransparency = 0, Position = UDim2.new(0.5, 0, 0, 12) }, 1.2, ES.Quint)
-            tw(pillScale, { Scale = 1 }, 1.2, ES.Quint)
+            local function layout(vertical)
+                local L, C = Enum.TextXAlignment.Left, Enum.TextXAlignment.Center
+                if not vertical then
+                    local x = 10
+                    avatar.Position, avatar.Size = UDim2.fromOffset(x, 7), UDim2.fromOffset(26, 26)
+                    x += 26 + 9
+                    for i, b in ipairs(blocks) do
+                        if i > 1 then
+                            local s = seps[i - 1]
+                            s.Size, s.Position = UDim2.fromOffset(1, 18), UDim2.fromOffset(x + 7, 11)
+                            x += 15
+                        end
+                        b.cap.TextXAlignment, b.val.TextXAlignment = L, L
+                        b.cap.Position, b.cap.Size = UDim2.fromOffset(x, 5), UDim2.fromOffset(b.w, 12)
+                        b.val.Position, b.val.Size = UDim2.fromOffset(x, 18), UDim2.fromOffset(b.w, 16)
+                        x += b.w
+                    end
+                    return Vector2.new(x + 12, 40)
+                end
+                local W = 10
+                for _, b in ipairs(blocks) do W = math.max(W, b.w) end
+                W += 28
+                local y = 10
+                avatar.Position, avatar.Size = UDim2.fromOffset((W - 26) / 2, y), UDim2.fromOffset(26, 26)
+                y += 26 + 8
+                for i, b in ipairs(blocks) do
+                    if i > 1 then
+                        local s = seps[i - 1]
+                        s.Size, s.Position = UDim2.fromOffset(W - 28, 1), UDim2.fromOffset(14, y + 3)
+                        y += 8
+                    end
+                    b.cap.TextXAlignment, b.val.TextXAlignment = C, C
+                    b.cap.Position, b.cap.Size = UDim2.fromOffset(0, y), UDim2.fromOffset(W, 12)
+                    b.val.Position, b.val.Size = UDim2.fromOffset(0, y + 12), UDim2.fromOffset(W, 16)
+                    y += 32
+                end
+                return Vector2.new(W, y + 6)
+            end
+
+            local function viewport()
+                local cam = workspace.CurrentCamera
+                return cam and cam.ViewportSize or Vector2.new(1920, 1080)
+            end
+            local barSize = layout(false)
+            local function absFor(side, sz)
+                local vp = viewport()
+                if side == "Top" then return Vector2.new((vp.X - sz.X) / 2, 12)
+                elseif side == "Bottom" then return Vector2.new((vp.X - sz.X) / 2, vp.Y - sz.Y - 12)
+                elseif side == "Left" then return Vector2.new(12, (vp.Y - sz.Y) / 2)
+                elseif side == "Right" then return Vector2.new(vp.X - sz.X - 12, (vp.Y - sz.Y) / 2) end
+                return Vector2.new(
+                    math.clamp(floatX or 100, 0, math.max(vp.X - sz.X, 0)),
+                    math.clamp(floatY or 100, 0, math.max(vp.Y - sz.Y, 0)))
+            end
+            local function dockProps(side)
+                if side == "Top" then return Vector2.new(0.5, 0), UDim2.new(0.5, 0, 0, 12)
+                elseif side == "Bottom" then return Vector2.new(0.5, 1), UDim2.new(0.5, 0, 1, -12)
+                elseif side == "Left" then return Vector2.new(0, 0.5), UDim2.new(0, 12, 0.5, 0)
+                elseif side == "Right" then return Vector2.new(1, 0.5), UDim2.new(1, -12, 0.5, 0) end
+                local a = absFor("Floating", barSize)
+                return Vector2.new(0, 0), UDim2.fromOffset(a.X, a.Y)
+            end
+            local function awayPos(side)
+                if side == "Top" then return UDim2.new(0.5, 0, 0, -barSize.Y - 10)
+                elseif side == "Bottom" then return UDim2.new(0.5, 0, 1, barSize.Y + 10)
+                elseif side == "Left" then return UDim2.new(0, -barSize.X - 20, 0.5, 0)
+                elseif side == "Right" then return UDim2.new(1, barSize.X + 20, 0.5, 0) end
+                local _, p = dockProps("Floating")
+                return UDim2.new(p.X.Scale, p.X.Offset, p.Y.Scale, p.Y.Offset - 30)
+            end
+
+            local function saveBar()
+                S.infoBar = { visible = barVisible, side = barSide, x = floatX, y = floatY }
+                persist()
+            end
+
+            local moveToken = 0
+            -- move to a side: slides from where it is now, then switches to anchor-based placement
+            local function apply(side, instant)
+                moveToken += 1
+                local mine = moveToken
+                barSide = side
+                barSize = layout(side == "Left" or side == "Right")
+                local anchor, pos = dockProps(side)
+                if instant or not pill.Visible then
+                    pill.AnchorPoint, pill.Position = anchor, pos
+                    pill.Size = UDim2.fromOffset(barSize.X, barSize.Y)
+                    return
+                end
+                local cur = pill.AbsolutePosition
+                pill.AnchorPoint = Vector2.new(0, 0)
+                pill.Position = UDim2.fromOffset(cur.X, cur.Y)
+                local target = absFor(side, barSize)
+                tw(pill, { Position = UDim2.fromOffset(target.X, target.Y), Size = UDim2.fromOffset(barSize.X, barSize.Y) }, 0.6, ES.Quint)
+                task.delay(0.65, function()
+                    if mine == moveToken and pill.Parent then
+                        pill.AnchorPoint, pill.Position = anchor, pos
+                    end
+                end)
+            end
+
+            -- dock hint while dragging
+            local hint = new("Frame", {
+                BackgroundColor3 = Theme.Accent, BackgroundTransparency = 1, BorderSizePixel = 0, Parent = gui,
+            }, { circle() })
+            local function showHint(s)
+                if not s then tw(hint, { BackgroundTransparency = 1 }, 0.2) return end
+                if s == "Left" then hint.AnchorPoint, hint.Position, hint.Size = Vector2.new(0, 0.5), UDim2.new(0, 2, 0.5, 0), UDim2.fromOffset(5, 180)
+                elseif s == "Right" then hint.AnchorPoint, hint.Position, hint.Size = Vector2.new(1, 0.5), UDim2.new(1, -2, 0.5, 0), UDim2.fromOffset(5, 180)
+                elseif s == "Top" then hint.AnchorPoint, hint.Position, hint.Size = Vector2.new(0.5, 0), UDim2.new(0.5, 0, 0, 2), UDim2.fromOffset(180, 5)
+                else hint.AnchorPoint, hint.Position, hint.Size = Vector2.new(0.5, 1), UDim2.new(0.5, 0, 1, -2), UDim2.fromOffset(180, 5) end
+                tw(hint, { BackgroundTransparency = 0.25 }, 0.2)
+            end
+            local function nearestEdge(x, y)
+                local vp, sz = viewport(), pill.AbsoluteSize
+                local d = { Left = x, Right = vp.X - (x + sz.X), Top = y, Bottom = vp.Y - (y + sz.Y) }
+                local best, bd
+                for s, v in pairs(d) do
+                    if not bd or v < bd then best, bd = s, v end
+                end
+                if bd < 70 then return best end
+                return nil
+            end
+
+            local hitP = new("TextButton", {
+                Size = UDim2.fromScale(1, 1), BackgroundTransparency = 1, Text = "",
+                AutoButtonColor = false, ZIndex = 20, Parent = pill,
+            })
+            hitP.MouseEnter:Connect(function() tw(pill, { BackgroundTransparency = 0.3 }, 0.4) end)
+            hitP.MouseLeave:Connect(function() tw(pill, { BackgroundTransparency = 0.1 }, 0.4) end)
+            local drag
+            hitP.InputBegan:Connect(function(i)
+                if i.UserInputType == Enum.UserInputType.MouseButton1 or i.UserInputType == Enum.UserInputType.Touch then
+                    drag = { start = i.Position, abs = pill.AbsolutePosition, moved = false }
+                    i.Changed:Connect(function()
+                        if i.UserInputState == Enum.UserInputState.End and drag then
+                            local d = drag
+                            drag = nil
+                            showHint(nil)
+                            if not d.moved then
+                                setVisible(not visible)
+                                return
+                            end
+                            local cur = pill.AbsolutePosition
+                            local edge = nearestEdge(cur.X, cur.Y)
+                            if edge then
+                                apply(edge, false)
+                            else
+                                floatX, floatY = cur.X, cur.Y
+                                barSide = "Floating"
+                            end
+                            saveBar()
+                        end
+                    end)
+                end
+            end)
+            connect(UIS.InputChanged, function(i)
+                if drag and (i.UserInputType == Enum.UserInputType.MouseMovement or i.UserInputType == Enum.UserInputType.Touch) then
+                    local delta = i.Position - drag.start
+                    if not drag.moved and delta.Magnitude > 6 then
+                        drag.moved = true
+                        moveToken += 1
+                        pill.AnchorPoint = Vector2.new(0, 0)
+                        pill.Position = UDim2.fromOffset(drag.abs.X, drag.abs.Y)
+                    end
+                    if drag.moved then
+                        local vp, sz = viewport(), pill.AbsoluteSize
+                        local x = math.clamp(drag.abs.X + delta.X, 0, math.max(vp.X - sz.X, 0))
+                        local y = math.clamp(drag.abs.Y + delta.Y, 0, math.max(vp.Y - sz.Y, 0))
+                        tw(pill, { Position = UDim2.fromOffset(x, y) }, 0.12)
+                        showHint(nearestEdge(x, y))
+                    end
+                end
+            end)
+
+            -- live values: numbers glide towards the real value instead of jumping
+            local function readPing()
+                local ok, v = pcall(function() return Stats.Network.ServerStatsItem["Data Ping"]:GetValue() end)
+                if not (ok and type(v) == "number") then
+                    ok, v = pcall(function() return lp:GetNetworkPing() * 1000 end)
+                end
+                if ok and type(v) == "number" then return v end
+                return nil
+            end
+            local function readServer()
+                srvV.Text = #Players:GetPlayers() .. "/" .. Players.MaxPlayers
+            end
+            local fpsTarget, fpsShown = 60, 0
+            local pingTarget, pingShown = readPing() or 0, 0
+            readServer()
+            local frames, acc, slow = 0, 0, 0
+            connect(RunService.RenderStepped, function(dt)
+                frames += 1
+                acc += dt
+                slow += dt
+                if acc >= 0.4 then
+                    fpsTarget = frames / acc
+                    frames, acc = 0, 0
+                end
+                if slow >= 1 then
+                    slow = 0
+                    pingTarget = readPing() or pingTarget
+                    readServer()
+                end
+                if pill.Visible then
+                    local k = math.min(dt * 7, 1)
+                    fpsShown += (fpsTarget - fpsShown) * k
+                    pingShown += (pingTarget - pingShown) * k
+                    fpsV.Text = tostring(math.floor(fpsShown + 0.5))
+                    pingV.Text = math.floor(pingShown + 0.5) .. " ms"
+                end
+            end)
+
+            apply(barSide, true)
+
+            showPill = function()
+                if not barVisible then return end
+                pill.Visible = true
+                apply(barSide, true)
+                local _, pos = dockProps(barSide)
+                pill.Position = awayPos(barSide)
+                tw(pill, { GroupTransparency = 0, Position = pos }, 1.2, ES.Quint)
+                tw(pillScale, { Scale = 1 }, 1.2, ES.Quint)
+            end
+
+            barApi = {}
+            function barApi.SetSide(side)
+                if not (side == "Top" or side == "Bottom" or side == "Left" or side == "Right" or side == "Floating") then return end
+                if side == "Floating" then
+                    local cur = pill.AbsolutePosition
+                    floatX, floatY = floatX or cur.X, floatY or cur.Y
+                end
+                if side ~= barSide then apply(side, false) saveBar() end
+            end
+            function barApi.GetSide() return barSide end
+            function barApi.SetVisible(b)
+                barVisible = b and true or false
+                if barVisible and ready then
+                    pill.Visible = true
+                    tw(pill, { GroupTransparency = 0 }, 0.6, ES.Quint)
+                else
+                    tw(pill, { GroupTransparency = 1 }, 0.5, ES.Quint)
+                    task.delay(0.55, function()
+                        if not barVisible then pill.Visible = false end
+                    end)
+                end
+                saveBar()
+            end
+            function barApi.IsVisible() return barVisible end
+            function barApi.Reset()
+                floatX, floatY = nil, nil
+                barVisible = true
+                apply("Top", false)
+                barApi.SetVisible(true)
+                saveBar()
+            end
         end
     end
+
+    function Window:SetFPS(b) if barApi then barApi.SetVisible(b) end end
+    Window.SetInfoBar = Window.SetFPS
+    function Window:SetInfoBarSide(side) if barApi then barApi.SetSide(side) end end
+    function Window:GetInfoBarSide() return barApi and barApi.GetSide() or nil end
 
     --// Intro: letters rise in one by one, then the window pops in ---------------
     local function afterReady()
@@ -1836,7 +3498,6 @@ function Lumen:CreateWindow(opts)
     if useIntro then
         task.spawn(function()
             local fs = 40
-            local text = opts.IntroText or opts.LoadingTitle or titleText
 
             local shade = new("Frame", {
                 Size = UDim2.fromScale(1, 1), BackgroundColor3 = Color3.new(0, 0, 0),
@@ -1847,25 +3508,65 @@ function Lumen:CreateWindow(opts)
                 Size = UDim2.fromOffset(10, 56), BackgroundTransparency = 1, Parent = gui,
             })
 
-            local cells, x, bold = {}, 0, true
-            for _, cp in utf8.codes(text) do
-                local ch = utf8.char(cp)
-                if ch == " " then
-                    bold = false
-                    x += 14
+            -- words with a style: bold (brand), normal (nickname) or dim (grey)
+            local brand = opts.IntroText or opts.LoadingTitle or titleText
+            local nickName = Players.LocalPlayer.Name
+            local words = {}
+            local function addWords(text, firstStyle, restStyle)
+                local first = true
+                for w in text:gmatch("%S+") do
+                    words[#words + 1] = { text = w, style = first and firstStyle or restStyle }
+                    first = false
+                end
+            end
+            if isReturning and opts.ReturningIntro ~= false then
+                if opts.ReturningText then
+                    local custom = opts.ReturningText:gsub("{nick}", nickName)
+                    custom = custom:gsub("{intro}", brand)
+                    addWords(custom, "bold", "dim")
                 else
-                    local font = bold and Enum.Font.GothamBold or Enum.Font.Gotham
-                    local w = TextService:GetTextSize(ch, fs, font, Vector2.new(1000, 1000)).X
+                    -- "Hello again <nick> 4D$ Present you"
+                    addWords("Hello again", "dim", "dim")
+                    addWords(nickName, "normal", "normal")
+                    addWords(brand, "bold", "dim")
+                    addWords("you", "dim", "dim")
+                end
+            else
+                addWords(brand, "bold", "dim")
+            end
+            local STYLE_FONT = { bold = Enum.Font.GothamBold, normal = Enum.Font.GothamMedium, dim = Enum.Font.Gotham }
+            local function measure(size2)
+                local total = 0
+                for wi, w in ipairs(words) do
+                    for _, cp in utf8.codes(w.text) do
+                        total += TextService:GetTextSize(utf8.char(cp), size2, STYLE_FONT[w.style], Vector2.new(1000, 1000)).X
+                    end
+                    if wi < #words then total += size2 * 0.35 end
+                end
+                return total
+            end
+            local camI = workspace.CurrentCamera
+            local vpW = camI and camI.ViewportSize.X or 1920
+            local totalW = measure(fs)
+            if totalW > vpW * 0.88 then fs = math.max(16, math.floor(fs * vpW * 0.88 / totalW)) end
+
+            local cells, x = {}, 0
+            for wi, w in ipairs(words) do
+                local font = STYLE_FONT[w.style]
+                local color = (w.style == "dim") and Color3.fromRGB(190, 190, 190) or Color3.new(1, 1, 1)
+                for _, cp in utf8.codes(w.text) do
+                    local ch = utf8.char(cp)
+                    local cw = TextService:GetTextSize(ch, fs, font, Vector2.new(1000, 1000)).X
                     local l = label({
-                        Text = ch, Font = font, TextSize = fs, TextTransparency = 1,
-                        TextColor3 = bold and Color3.new(1, 1, 1) or Color3.fromRGB(190, 190, 190),
+                        Text = ch, Font = font, TextSize = fs, TextTransparency = 1, TextColor3 = color,
                         TextXAlignment = Enum.TextXAlignment.Center,
-                        Position = UDim2.fromOffset(x, 16), Size = UDim2.fromOffset(w + 2, 56),
+                        Position = UDim2.fromOffset(x, 16), Size = UDim2.fromOffset(cw + 2, 56),
                         Parent = holderI,
                     })
                     cells[#cells + 1] = { label = l, x = x }
-                    x += w
+                    x += cw
                 end
+                if wi < #words then x += fs * 0.35 end
             end
             holderI.Size = UDim2.fromOffset(x, 56)
             local underline = new("Frame", {
@@ -1906,11 +3607,194 @@ function Lumen:CreateWindow(opts)
             visible = true
             unfold()
             shade:Destroy()
-            if not gui.Parent then return end            afterReady()
+            if not gui.Parent then return end
+            afterReady()
         end)
     else
         setBlur(true, 0.4)
         afterReady()
+        if isReturning and opts.ReturningIntro ~= false then
+            task.delay(0.8, function()
+                Window:Notify({
+                    Title = titleText, Type = "success", Duration = 4,
+                    Content = "Hello again " .. Players.LocalPlayer.Name .. " " .. (opts.IntroText or opts.LoadingTitle or titleText) .. " you",
+                })
+            end)
+        end
+    end
+
+    --// Interface settings: setters used by the built-in Settings tab ---------------------
+    function Window:SetToggleKey(k)
+        if type(k) == "string" then
+            local ok, kc = pcall(function() return Enum.KeyCode[k] end)
+            if ok and kc then k = kc end
+        end
+        if typeof(k) == "EnumItem" then toggleKey = k end
+    end
+
+    function Window:SetNotifySide(side)
+        local lay = holder:FindFirstChildOfClass("UIListLayout")
+        if side == "Left" then
+            notifySide = "Left"
+            holder.AnchorPoint, holder.Position = Vector2.new(0, 1), UDim2.new(0, 16, 1, -16)
+            if lay then lay.HorizontalAlignment = Enum.HorizontalAlignment.Left end
+        else
+            notifySide = "Right"
+            holder.AnchorPoint, holder.Position = Vector2.new(1, 1), UDim2.new(1, -16, 1, -16)
+            if lay then lay.HorizontalAlignment = Enum.HorizontalAlignment.Right end
+        end
+    end
+    Window:SetNotifySide(notifySide)
+
+    --// Built-in Settings tab: appears after your own tabs, no code needed ------------------
+    -- Pass SettingsTab = false to CreateWindow to turn it off.
+    if opts.SettingsTab ~= false then
+        task.defer(function()
+            if destroying then return end
+            local Tab = Window:CreateTab("Settings", "settings")
+            local ref = {}
+            local function rgbOf(c)
+                return { math.floor(c.R * 255 + 0.5), math.floor(c.G * 255 + 0.5), math.floor(c.B * 255 + 0.5) }
+            end
+            local presets = {
+                White = Color3.fromRGB(255, 255, 255), Violet = Color3.fromRGB(140, 110, 255),
+                Blue = Color3.fromRGB(80, 150, 255), Cyan = Color3.fromRGB(70, 210, 230),
+                Green = Color3.fromRGB(90, 220, 140), Orange = Color3.fromRGB(255, 160, 70),
+                Red = Color3.fromRGB(255, 95, 95), Pink = Color3.fromRGB(255, 120, 190),
+            }
+            local presetNames = { "White", "Violet", "Blue", "Cyan", "Green", "Orange", "Red", "Pink" }
+            local function presetOf(c)
+                for name, p in pairs(presets) do
+                    if math.abs(p.R - c.R) + math.abs(p.G - c.G) + math.abs(p.B - c.B) < 0.02 then return name end
+                end
+                return nil
+            end
+
+            Tab:CreateSection("Appearance")
+            ref.preset = Tab:CreateDropdown({
+                Name = "Accent color", Icon = "eye", Options = presetNames,
+                CurrentOption = { presetOf(Theme.Accent) or "White" },
+                Callback = function(sel)
+                    local c = presets[sel[1]]
+                    if not c then return end
+                    Window:SetAccent(c)
+                    S.accent = rgbOf(c)
+                    persist()
+                    ref.custom:Set(c, true)
+                end,
+            })
+            ref.custom = Tab:CreateColorPicker({
+                Name = "Custom accent color", Icon = "sliders", Color = Theme.Accent,
+                Callback = function(c)
+                    Window:SetAccent(c)
+                    S.accent = rgbOf(c)
+                    persist()
+                end,
+            })
+            ref.transparency = Tab:CreateSlider({
+                Name = "Window transparency", Icon = "eye", Range = { 0, 0.9 }, Increment = 0.05,
+                CurrentValue = startTransparency,
+                Callback = function(v) Window:SetTransparency(v) S.transparency = v persist() end,
+            })
+            ref.scale = Tab:CreateSlider({
+                Name = "Interface scale", Icon = "sliders", Range = { 0.7, 1.3 }, Increment = 0.05,
+                CurrentValue = userScale,
+                Callback = function(v) Window:SetScale(v) S.scale = v persist() end,
+            })
+            ref.blur = Tab:CreateToggle({
+                Name = "Blur behind the window", Icon = "eye", CurrentValue = blurEnabled,
+                Callback = function(v) Window:SetBlur(v) S.blur = v persist() end,
+            })
+            ref.intro = Tab:CreateToggle({
+                Name = "Intro animation (next launch)", Icon = "bolt", CurrentValue = pref("intro", opts.Intro ~= false),
+                Callback = function(v) S.intro = v persist() end,
+            })
+            ref.key = Tab:CreateKeybind({
+                Name = "Hide / show key", Icon = "bolt", CurrentKeybind = toggleKey.Name,
+                OnChange = function(name)
+                    Window:SetToggleKey(name)
+                    S.toggleKey = name
+                    persist()
+                end,
+            })
+            ref.notify = Tab:CreateDropdown({
+                Name = "Notifications side", Icon = "pin", Options = { "Right", "Left" }, CurrentOption = { notifySide },
+                Callback = function(sel)
+                    Window:SetNotifySide(sel[1])
+                    S.notifySide = notifySide
+                    persist()
+                    Window:Notify({ Title = "Notifications", Content = "They appear on the " .. string.lower(notifySide) .. " now.", Duration = 2.5 })
+                end,
+            })
+
+            if barApi then
+                Tab:CreateSection("Info bar")
+                ref.barShow = Tab:CreateToggle({
+                    Name = "Show the info bar", Icon = "eye", CurrentValue = barApi.IsVisible(),
+                    Callback = function(v) Window:SetFPS(v) end,
+                })
+                ref.barSide = Tab:CreateDropdown({
+                    Name = "Info bar position", Icon = "pin",
+                    Options = { "Top", "Bottom", "Left", "Right", "Floating" }, CurrentOption = { barApi.GetSide() },
+                    Callback = function(sel) Window:SetInfoBarSide(sel[1]) end,
+                })
+                Tab:CreateLabel("Hold the info bar and drag it. Drop it near an edge to dock it there, or anywhere else to leave it as a floating window.")
+            end
+
+            Tab:CreateSection("Windows")
+            Tab:CreateButton({
+                Name = "Reset window positions", Icon = "refresh",
+                Callback = function()
+                    Window:ResetLayout()
+                    if barApi then barApi.Reset() ref.barSide:Set(barApi.GetSide(), true) ref.barShow:Set(true, true) end
+                end,
+            })
+            Tab:CreateLabel("Side windows (panels) open when the mouse touches their screen edge. Hold their title to move them, use the arrows button to jump to the next edge.")
+
+            Tab:CreateSection("Your data")
+            ref.remember = Tab:CreateToggle({
+                Name = "Remember my settings", Icon = "shield", CurrentValue = remember,
+                Callback = function(v)
+                    S.remember = v
+                    remember = v
+                    saveUserData()
+                end,
+            })
+            Tab:CreateLabel(string.format("Player: %s    Launches: %d", Players.LocalPlayer.Name, ud.visits or 1))
+            Tab:CreateButton({
+                Name = "Reset all interface settings", Icon = "close",
+                Callback = function()
+                    for k in pairs(S) do S[k] = nil end
+                    for k in pairs(layoutStore) do layoutStore[k] = nil end
+                    S.layout = layoutStore
+                    remember = true
+                    Window:SetAccent(defaults.accent)
+                    Window:SetTransparency(defaults.transparency)
+                    Window:SetScale(defaults.scale)
+                    Window:SetBlur(defaults.blur)
+                    Window:SetToggleKey(defaults.toggleKey)
+                    Window:SetNotifySide("Right")
+                    Window:ResetLayout()
+                    if barApi then barApi.Reset() end
+                    ref.preset:Set(presetOf(defaults.accent) or "White", true)
+                    ref.custom:Set(defaults.accent, true)
+                    ref.transparency:Set(defaults.transparency, true)
+                    ref.scale:Set(defaults.scale, true)
+                    ref.blur:Set(defaults.blur, true)
+                    ref.intro:Set(defaults.intro, true)
+                    ref.notify:Set("Right", true)
+                    ref.remember:Set(true, true)
+                    saveUserData()
+                    Window:Notify({ Title = "Settings", Content = "Interface settings were reset.", Type = "success", Duration = 3 })
+                end,
+            })
+
+            Tab:CreateSection("About")
+            Tab:CreateParagraph({
+                Title = "Lumen UI " .. Lumen.Version,
+                Content = "Settings made here are saved for your account and loaded again every time the script starts.",
+            })
+        end)
     end
 
     return Window
