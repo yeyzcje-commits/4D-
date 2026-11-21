@@ -1,4 +1,4 @@
-# Lumen UI Library
+# 4D$ UI Library
 
 **Languages:** [Русский](#-русский) · [English](#-english)
 
@@ -52,7 +52,7 @@ local Lumen = loadstring(game:HttpGet("https://raw.githubusercontent.com/<ты>/
 ## Быстрый старт
 
 ```lua
-local Lumen = loadstring(readfile("Lumen.lua"))()
+local Lumen = loadstring(readfile("4D$.lua"))()
 
 local Window = Lumen:CreateWindow({
     Name = "Мой скрипт",
